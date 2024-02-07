@@ -2,13 +2,41 @@
 import ButtonCTA from '@/components/ButtonCTA';
 import '@/styles/Hero.css';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
 
 const Hero: React.FC = () => {
+  const scrollParentRef = useRef<HTMLDivElement>(null);
+
   const handleCTA = (): void => {
     window.open('/Muh Abdul Azis CV.pdf', '_self');
   };
+
+  useEffect(() => {
+    if (scrollParentRef.current) {
+      const scrollLength = scrollParentRef.current?.getClientRects()[0].height;
+
+      let interval = 2000;
+      let scroll = 0;
+      const scrollingText = () => {
+        scroll += scrollLength;
+        if (scroll === scrollLength * 5) {
+          scroll = 0;
+          interval = 2000;
+          scrollParentRef.current?.scroll({ top: scroll, left: 0, behavior: 'instant' });
+        } else {
+          scrollParentRef.current?.scroll({ top: scroll, left: 0, behavior: 'smooth' });
+          if (scroll + scrollLength === scrollLength * 5) {
+            interval = 300;
+          }
+        }
+
+        setTimeout(scrollingText, interval);
+      };
+
+      scrollingText();
+    }
+  }, []);
 
   return (
     <main id="hero">
@@ -76,7 +104,47 @@ const Hero: React.FC = () => {
           <ButtonCTA action={handleCTA}>Download as CV</ButtonCTA>
         </div>
       </div>
-      <div className="collumn col3"></div>
+      <div className="collumn col3">
+        <div ref={scrollParentRef} className="scrolling-text">
+          <div className="scrolling-item">
+            Website
+            <br />
+            Developer
+          </div>
+          <div className="scrolling-item">Programmer</div>
+          <div className="scrolling-item">
+            UI/UX
+            <br />
+            Designer
+          </div>
+          <div className="scrolling-item">
+            Logo
+            <br />
+            Designer
+          </div>
+          <div className="scrolling-item">
+            Website
+            <br />
+            Developer
+          </div>
+        </div>
+        <div className="backstory-tab">
+          <span className="quote">&quot;</span>
+          <p className="backstory">
+            Graduated from an <span className="purple-text">almost-IT major</span> in one of most <span className="purple-text">favorite university</span> in Indonesia. The main focus is in{' '}
+            <span className="purple-text">digital electronics</span> which requires <span className="purple-text">programming</span> most of the time, so I decided to deepen my programming skill as a{' '}
+            <span className="purple-text">web developer</span> because I love visuals.
+          </p>
+        </div>
+        <div className="learn-more">
+          <span className="text">
+            Learn more
+            <br />
+            about me
+          </span>
+          <span className="arrow" />
+        </div>
+      </div>
     </main>
   );
 };

@@ -1,5 +1,6 @@
 button {
   position: relative;
+  width: fit-content;
   padding: 15px 20px;
   line-height: 95%;
   color: var(--clr-text-white);
