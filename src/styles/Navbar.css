@@ -1,0 +1,38 @@
+#navbar {
+  position: fixed;
+  display: flex;
+  width: 100dvw;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  z-index: 999;
+
+  .navbar-container {
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    padding: 10px 2%;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu-list {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      align-items: center;
+
+      .menu-item {
+        > a {
+          color: var(--clr-text-dark);
+          text-decoration: none;
+          font-weight: 300;
+          transition: all 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+        }
+
+        > a:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
