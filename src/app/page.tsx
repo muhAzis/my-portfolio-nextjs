@@ -1,10 +1,10 @@
 import '@/styles/page.css';
-import Navbar from '@/views/Navbar';
+import Hero from '@/views/Hero';
 
 export default function Home() {
   return (
     <div id="app">
-      <Navbar />
+      <Hero />
     </div>
   );
 }

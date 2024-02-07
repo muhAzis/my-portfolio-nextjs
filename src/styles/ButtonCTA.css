@@ -8,7 +8,7 @@ button {
   border: none;
   box-shadow: 0 0 10px 1px rgba(43, 43, 43, 0.5);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out, scale 0.1 ease-in-out;
   z-index: 1;
 
   &:hover {
@@ -32,5 +32,9 @@ button {
 
   &:hover::before {
     opacity: 1;
+  }
+
+  &:active {
+    scale: 0.98;
   }
 }
