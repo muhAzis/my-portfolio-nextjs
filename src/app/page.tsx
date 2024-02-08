@@ -1,4 +1,6 @@
 import '@/styles/page.css';
+import Contacts from '@/views/Contacts';
+import Footer from '@/views/Footer';
 import Hero from '@/views/Hero';
 import Skills from '@/views/Skills';
 
@@ -7,6 +9,8 @@ export default function Home() {
     <div id="app">
       <Hero />
       <Skills />
+      <Contacts />
+      <Footer />
     </div>
   );
 }
