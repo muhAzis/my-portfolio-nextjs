@@ -1,0 +1,84 @@
+@keyframes blob {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  25% {
+    border-radius: 69% 31% 83% 17% / 22% 67% 33% 78%;
+  }
+  50% {
+    border-radius: 41% 59% 51% 49% / 37% 57% 43% 63%;
+  }
+  75% {
+    border-radius: 13% 87% 83% 17% / 37% 76% 24% 63%;
+  }
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+}
+
+#skills {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30vh 7%;
+
+  .row1 {
+    display: flex;
+    gap: 8%;
+
+    .title {
+      width: 45%;
+      line-height: 95%;
+
+      .gradient-text {
+        background: var(--clr-purple-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .skill-cards {
+      position: relative;
+      display: flex;
+      width: 55%;
+      gap: 40px;
+      z-index: 1;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: var(--clr-purple-gradient);
+        animation: blob 5s infinite alternate;
+        filter: blur(50px);
+        z-index: -1;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 200px;
+        padding: 20px;
+        color: var(--clr-text-white);
+        background: var(--clr-glass-gradient);
+        border-radius: 20px;
+        border: 2px solid rgba(245, 245, 245, 0.2);
+        backdrop-filter: blur(50px);
+        justify-content: space-between;
+
+        .skill-icon {
+          width: 50px;
+        }
+
+        .skill-desc {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
