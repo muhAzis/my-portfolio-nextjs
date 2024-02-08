@@ -8,7 +8,8 @@ const Skills: React.FC = () => {
     <main id="skills">
       <div className="row1">
         <h2 className="title">
-          What <span className="gradient-text">skills</span> I am good at
+          What <span className="gradient-text">skills</span>
+          <br />I am good at
         </h2>
         <div className="skill-cards">
           <div className="card">
@@ -27,12 +28,13 @@ const Skills: React.FC = () => {
       </div>
       <div className="row2">
         <h4 className="tech-title">
-          <span className="gradient-text">Technology</span> I currently use
+          <span className="gradient-text">Technology</span>
+          <br />I currently can use
         </h4>
         <div className="prog-stacks">
           <div className="icons">
             {progIcons.map((icon, index) => (
-              <div key={index} className="icon" style={{ height: '30px', width: 'fit-content', maxWidth: '50px' }}>
+              <div key={index} className="icon">
                 <img className="icon-image" src={`/${icon}.png`} alt={icon} style={{ width: '100%', objectFit: 'cover' }} />
               </div>
             ))}

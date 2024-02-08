@@ -21,6 +21,7 @@
   flex-direction: column;
   width: 100%;
   padding: 30vh 7%;
+  gap: 40px;
 
   .row1 {
     display: flex;
@@ -78,6 +79,64 @@
         .skill-desc {
           font-weight: 700;
         }
+      }
+    }
+  }
+
+  .row2 {
+    display: flex;
+    gap: 8%;
+    align-items: center;
+
+    .tech-title {
+      width: 45%;
+      font-weight: 300;
+      text-align: right;
+      line-height: 95%;
+
+      .gradient-text {
+        font-weight: 700;
+        background: var(--clr-purple-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    }
+
+    .prog-stacks {
+      display: flex;
+      width: 55%;
+      gap: 20px;
+
+      .icons {
+        display: flex;
+        flex-wrap: wrap;
+        width: 55%;
+        padding-block: 20px;
+        gap: 20px;
+
+        .icon {
+          display: flex;
+          height: 30px;
+          width: fit-content;
+          max-width: 50px;
+          filter: grayscale(1);
+          transition: all 0.2s ease-in-out;
+          align-items: center;
+
+          &:hover {
+            filter: grayscale(0);
+          }
+        }
+      }
+
+      .tech-image {
+        flex: 1;
+        width: 45%;
+        background-image: url('/bg1.jpg');
+        background-position: center;
+        background-size: cover;
+        border-radius: 20px;
       }
     }
   }
