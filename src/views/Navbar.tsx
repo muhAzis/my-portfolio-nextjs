@@ -3,6 +3,7 @@ import '@/styles/Navbar.css';
 import ButtonCTA from '@/components/ButtonCTA';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import Logo from '@/components/Logo';
 
 const Navbar: React.FC = () => {
   const [yOffset, setYOffset] = useState<number>(0);
@@ -23,14 +24,14 @@ const Navbar: React.FC = () => {
     <nav id="navbar" style={yOffset > 0 ? { backdropFilter: 'blur(20px)', boxShadow: 'var(--box-shadow-lite1)' } : {}}>
       <div className="navbar-container">
         <div className="logo">
-          <Image src={'/Logo.svg'} alt="Logo" height={40} width={50} />
+          <Logo style={{ width: '50px', height: 'fit-content' }} />
         </div>
         <ul className="menu-list">
           <li className="menu-item">
-            <a href="#home">Home</a>
+            <a href="#hero">Home</a>
           </li>
           <li className="menu-item">
-            <a href="#about">Skills</a>
+            <a href="#skills">Skills</a>
           </li>
           <li className="menu-item">
             <a href="#projects">Projects</a>

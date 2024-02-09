@@ -9,11 +9,10 @@ button {
   border: none;
   box-shadow: 0 0 10px 1px rgba(43, 43, 43, 0.5);
   cursor: pointer;
-  transition: all 0.2s ease-in-out, scale 0.1 ease-in-out;
+  transition: all 0.2s ease-in-out;
   z-index: 1;
 
   &:hover {
-    background-color: var(--clr-purple);
     box-shadow: 0 0 20px 2px var(--clr-pink);
   }
 
@@ -37,5 +36,6 @@ button {
 
   &:active {
     scale: 0.98;
+    transition: scale 0.1s ease-in-out;
   }
 }

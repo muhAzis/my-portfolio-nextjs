@@ -1,3 +1,4 @@
+import Logo from '@/components/Logo';
 import '@/styles/Contacts.css';
 import React from 'react';
 
@@ -48,7 +49,21 @@ const Contacts: React.FC = () => {
         </div>
       </div>
       <div className="col3">
-        <img src="/Logo.svg" alt="logo" />
+        <Logo
+          style={{
+            width: '100%',
+            height: '100%',
+            fill: 'url(#my-gradient)',
+            stroke: 'var(--clr-white)',
+            strokeWidth: '2px ',
+            strokeOpacity: '0.2',
+          }}
+        >
+          <linearGradient id="my-gradient" x2="1" y2="1">
+            <stop offset="0%" stop-color="rgba(144, 34, 229, 0.1)" />
+            <stop offset="100%" stop-color="rgba(43, 43, 43, 0.1)" />
+          </linearGradient>
+        </Logo>
       </div>
     </main>
   );

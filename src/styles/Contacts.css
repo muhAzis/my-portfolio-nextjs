@@ -1,3 +1,21 @@
+@keyframes blob {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  25% {
+    border-radius: 69% 31% 83% 17% / 22% 67% 33% 78%;
+  }
+  50% {
+    border-radius: 41% 59% 51% 49% / 37% 57% 43% 63%;
+  }
+  75% {
+    border-radius: 13% 87% 83% 17% / 37% 76% 24% 63%;
+  }
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+}
+
 #contacts {
   display: flex;
   padding: 100px 7%;
@@ -69,8 +87,28 @@
   }
 
   .col3 {
+    position: relative;
     display: grid;
     width: 25%;
     place-content: center;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 50%;
+      left: 50%;
+      background: var(--clr-purple-gradient);
+      animation: blob 5s infinite linear;
+      filter: blur(60px);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    .logo {
+      fill: var(--clr-purple);
+    }
   }
 }
