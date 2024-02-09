@@ -512,7 +512,7 @@
       align-items: center;
 
       .scrolling-text {
-        width: 100%;
+        width: 270px;
         min-width: 100px;
 
         .scrolling-item {

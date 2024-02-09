@@ -4,6 +4,7 @@
   width: 100dvw;
   top: 0;
   left: 0;
+  transition: all 0.5s ease-in-out;
   justify-content: center;
   z-index: 999;
 
@@ -14,6 +15,10 @@
     padding: 10px 2%;
     justify-content: space-between;
     align-items: center;
+
+    .logo {
+      transition: all 0.2s ease-in-out;
+    }
 
     .menu-list {
       display: flex;
@@ -32,6 +37,55 @@
         > a:hover {
           font-weight: 700;
         }
+      }
+
+      #downloadCV2 {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #navbar {
+    .navbar-container {
+      position: relative;
+      justify-content: flex-end;
+
+      .logo {
+        cursor: pointer;
+      }
+
+      .menu-list {
+        position: absolute;
+        flex-direction: column;
+        height: 0dvh;
+        padding: 0px 10%;
+        gap: 0px;
+        top: 100%;
+        right: 0;
+        background-color: rgba(245, 245, 245, 0.3);
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        overflow: hidden;
+
+        #downloadCV2 {
+          display: block;
+        }
+      }
+
+      .active {
+        position: absolute;
+        flex-direction: column;
+        height: 100dvh;
+        padding: 20px 10%;
+        gap: 30px;
+        top: 100%;
+        right: 0;
+        background-color: rgba(245, 245, 245, 0.3);
+        backdrop-filter: blur(20px);
+        opacity: 1;
       }
     }
   }
