@@ -7,17 +7,24 @@ const Footer: React.FC = () => {
 
   return (
     <footer id="footer">
-      <p className="copyright">
+      <div className="copyright">
         <Copyright />
-        <span className="bold-text">{year} All rights reserved</span>, designed and developed by <span className="bold-text">Muhamad Abdul Azis</span>
-      </p>
+        <div className="copy-text">
+          <span>
+            <span className="bold-text">{year} All rights reserved</span>,
+          </span>
+          <span>
+            designed and developed by <span className="bold-text">Muhamad Abdul Azis</span>
+          </span>
+        </div>
+      </div>
     </footer>
   );
 };
 
 const Copyright = () => {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-dark)' }} xmlns="http://www.w3.org/2000/svg">
+    <svg id="copyright" width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-dark)' }} xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

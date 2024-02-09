@@ -9,8 +9,31 @@
     gap: 4px;
     align-items: center;
 
-    .bold-text {
-      font-weight: 700;
+    .copy-text {
+      display: flex;
+      gap: 4px;
+      white-space: nowrap;
+
+      .bold-text {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #footer {
+    padding: 40px 7%;
+    justify-content: flex-start;
+
+    .copyright {
+      font-size: 0.8rem;
+
+      .copy-text {
+        flex-direction: column;
+        white-space: normal;
+        gap: 0;
+      }
     }
   }
 }
