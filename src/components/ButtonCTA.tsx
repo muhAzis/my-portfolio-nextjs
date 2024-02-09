@@ -4,11 +4,13 @@ import React from 'react';
 interface Props {
   children: React.ReactNode;
   action: () => void;
+  className?: string;
+  id?: string;
 }
 
-const ButtonCTA: React.FC<Props> = ({ children, action }) => {
+const ButtonCTA: React.FC<Props> = ({ children, action, className, id }) => {
   return (
-    <button className="call-to-action" onClick={action}>
+    <button id={id} className={className + ' call-to-action'} onClick={action}>
       {children}
     </button>
   );

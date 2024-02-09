@@ -60,8 +60,8 @@ const Contacts: React.FC = () => {
           }}
         >
           <linearGradient id="my-gradient" x2="1" y2="1">
-            <stop offset="0%" stop-color="rgba(144, 34, 229, 0.1)" />
-            <stop offset="100%" stop-color="rgba(43, 43, 43, 0.1)" />
+            <stop offset="0%" stopColor="rgba(144, 34, 229, 0.1)" />
+            <stop offset="100%" stopColor="rgba(43, 43, 43, 0.1)" />
           </linearGradient>
         </Logo>
       </div>

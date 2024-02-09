@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
   return (
     <main id="hero">
       <div className="left-col">
-        <div className="collumn col1">
+        <div className="col1">
           <Marquee style={{ overflow: 'hidden' }}>
             <span className="profile-pict-running-text">Muhamad Abdul Azis</span>
           </Marquee>
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
             }}
           />
         </div>
-        <div className="collumn col2">
+        <div className="col2">
           <div className="row1">
             <div className="greet">Hi, I&apos;m</div>
             <div className="status">
@@ -102,7 +102,9 @@ const Hero: React.FC = () => {
               a <span className="blackbold-text">Web Developer</span> based <span className="blackbold-text">Programmer</span> and a <span className="blackbold-text">Graphic Designer</span>. Specialized in{' '}
               <span className="purple-text">Code Development</span>, <span className="purple-text">Responsive Web Layouts</span> and <span className="purple-text">UI/UX Design</span>.
             </p>
-            <ButtonCTA action={handleCTA}>Download as CV</ButtonCTA>
+            <ButtonCTA id={'downloadCV'} action={handleCTA}>
+              Download as CV
+            </ButtonCTA>
           </div>
         </div>
       </div>

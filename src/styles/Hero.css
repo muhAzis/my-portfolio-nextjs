@@ -181,7 +181,6 @@
       .scrolling-item {
         display: flex;
         width: fit-content;
-        width: 100%;
         height: 100%;
         float: right;
         color: transparent;
@@ -212,6 +211,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        z-index: -1;
       }
 
       .backstory {
@@ -388,45 +388,155 @@
     }
 
     .right-col {
-      flex-direction: row;
       flex-wrap: wrap;
-      width: 100%;
-      gap: 40px;
       align-items: center;
       justify-content: center;
 
       .scrolling-text {
         order: 2;
-        max-width: fit-content;
-        width: 35vw;
-        min-width: 270px;
-        height: 100px;
-
-        .scrolling-item {
-          font-size: 4vw;
-        }
       }
 
       .backstory-tab {
-        display: flex;
         order: 1;
         width: 95%;
-        justify-content: flex-end;
 
         .quote {
-          left: -37px;
+          left: -36px;
         }
 
         .backstory {
           max-width: 100%;
-          text-align: right;
+          text-align: start;
         }
       }
 
       .learn-more {
         order: 3;
         padding: 15px 10vw;
-        gap: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #hero {
+    .left-col {
+      .col1 {
+        .address-bar {
+          font-size: 0.8rem;
+
+          .map {
+            font-size: 1.3rem;
+          }
+
+          .country {
+            font-size: 1.2rem;
+          }
+        }
+      }
+
+      .col2 {
+        .row1 {
+          .status {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    .right-col {
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .scrolling-text {
+        width: 30vw;
+        min-width: 100px;
+
+        .scrolling-item {
+          font-size: 4.2vw;
+        }
+      }
+
+      .learn-more {
+        padding: 15px 5vw;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #hero {
+    .left-col {
+      flex-direction: column;
+      gap: 20px;
+
+      .col1 {
+        width: 90%;
+        max-width: 350px;
+        height: 100dvh;
+        max-height: 935px;
+        align-self: center;
+      }
+
+      .col2 {
+        .row1 {
+          .greet {
+            font-size: 11.2vw;
+          }
+        }
+
+        .row2 {
+          .name {
+            font-size: 12.8vw;
+          }
+        }
+
+        .row3 {
+          .description {
+            font-size: 1rem;
+          }
+
+          #downloadCV {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .right-col {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      padding-top: 0;
+      gap: 20px;
+      justify-content: flex-start;
+      align-items: center;
+
+      .scrolling-text {
+        width: 100%;
+        min-width: 100px;
+
+        .scrolling-item {
+          margin-inline: auto;
+          font-size: 2.5rem;
+        }
+      }
+
+      .backstory-tab {
+        width: 80%;
+
+        .quote {
+          left: -36px;
+        }
+
+        .backstory {
+          font-size: 0.8rem;
+        }
+      }
+
+      .learn-more {
+        width: 100%;
+        padding: 15px 5vw;
+        justify-content: center;
       }
     }
   }
