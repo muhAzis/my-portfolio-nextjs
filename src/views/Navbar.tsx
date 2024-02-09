@@ -1,5 +1,5 @@
 'use client';
-import '@/styles/Navbar.css';
+import '@/styles/Navbar.scss';
 import ButtonCTA from '@/components/ButtonCTA';
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '@/components/Logo';

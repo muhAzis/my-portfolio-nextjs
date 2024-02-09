@@ -1,5 +1,5 @@
 import Logo from '@/components/Logo';
-import '@/styles/Contacts.css';
+import '@/styles/Contacts.scss';
 import React from 'react';
 
 const Contacts: React.FC = () => {

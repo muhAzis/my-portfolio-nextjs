@@ -1,4 +1,4 @@
-import '@/styles/ButtonCTA.css';
+import '@/styles/ButtonCTA.scss';
 import React from 'react';
 
 interface Props {

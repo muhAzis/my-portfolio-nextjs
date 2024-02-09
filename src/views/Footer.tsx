@@ -1,5 +1,5 @@
 'use client';
-import '@/styles/Footer.css';
+import '@/styles/Footer.scss';
 import React, { useEffect, useState } from 'react';
 
 const Footer: React.FC = () => {

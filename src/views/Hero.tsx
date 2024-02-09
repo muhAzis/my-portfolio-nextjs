@@ -1,6 +1,6 @@
 'use client';
 import ButtonCTA from '@/components/ButtonCTA';
-import '@/styles/Hero.css';
+import '@/styles/Hero.scss';
 import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';

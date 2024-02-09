@@ -1,4 +1,4 @@
-import '@/styles/Skills.css';
+import '@/styles/Skills.scss';
 import React from 'react';
 
 const Skills: React.FC = () => {
