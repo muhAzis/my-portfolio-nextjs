@@ -1,10 +1,11 @@
+import LoadingScreen from '@/views/LoadingScreen';
 import React from 'react';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
-    <div>
-      <h1>Page is loading, please wait...</h1>
-    </div>
+    <>
+      <LoadingScreen />
+    </>
   );
 };
 

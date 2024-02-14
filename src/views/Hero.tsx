@@ -2,10 +2,35 @@
 import ButtonCTA from '@/components/ButtonCTA';
 import '@/styles/Hero.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import Marquee from 'react-fast-marquee';
+import { Variants, motion } from 'framer-motion';
+import Reveal from '@/components/animations/Reveal';
+import { useViewport } from '@/hooks/useViewport';
+
+const parent: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const children: Variants = {
+  hidden: { opacity: 0, x: '-50%' },
+  visible: { opacity: 1, x: '0%', transition: { duration: 0.5 } },
+};
+
+const children2: Variants = {
+  hidden: { opacity: 0, x: '50%' },
+  visible: { opacity: 1, x: '0%', transition: { duration: 0.5 } },
+};
 
 const Hero: React.FC = () => {
+  const [width, height] = useViewport();
   const scrollParentRef = useRef<HTMLDivElement>(null);
 
   const handleCTA = (): void => {
@@ -31,7 +56,11 @@ const Hero: React.FC = () => {
           }
         }
 
-        setTimeout(scrollingText, interval);
+        const start = setTimeout(scrollingText, interval);
+
+        return () => {
+          clearTimeout(start);
+        };
       };
 
       scrollingText();
@@ -39,9 +68,15 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <main id="hero">
+    <motion.main id="hero" variants={parent} initial="hidden" animate="visible">
       <div className="left-col">
-        <div className="col1">
+        <motion.div
+          variants={{
+            hidden: { maxHeight: '0px' },
+            visible: { maxHeight: '935px', transition: { duration: 1 } },
+          }}
+          className="col1"
+        >
           <Marquee style={{ overflow: 'hidden' }}>
             <span className="profile-pict-running-text">Muhamad Abdul Azis</span>
           </Marquee>
@@ -79,16 +114,16 @@ const Hero: React.FC = () => {
               zIndex: 1,
             }}
           />
-        </div>
+        </motion.div>
         <div className="col2">
-          <div className="row1">
+          <Reveal variants={children} className="row1">
             <div className="greet">Hi, I&apos;m</div>
             <div className="status">
               <span className="dot" />
               Available now
             </div>
-          </div>
-          <div className="row2">
+          </Reveal>
+          <Reveal variants={children} className="row2">
             <h1 className="name">
               Muhamad
               <br />
@@ -96,8 +131,8 @@ const Hero: React.FC = () => {
               <br />
               Azis
             </h1>
-          </div>
-          <div className="row3">
+          </Reveal>
+          <Reveal variants={children} className="row3">
             <p className="description">
               a <span className="blackbold-text">Web Developer</span> based <span className="blackbold-text">Programmer</span> and a <span className="blackbold-text">Graphic Designer</span>. Specialized in{' '}
               <span className="purple-text">Code Development</span>, <span className="purple-text">Responsive Web Layouts</span> and <span className="purple-text">UI/UX Design</span>.
@@ -105,51 +140,55 @@ const Hero: React.FC = () => {
             <ButtonCTA id={'downloadCV'} action={handleCTA}>
               Download as CV
             </ButtonCTA>
-          </div>
+          </Reveal>
         </div>
       </div>
       <div className="right-col">
-        <div ref={scrollParentRef} className="scrolling-text">
-          <div className="scrolling-item">
-            Website
-            <br />
-            Developer
+        <Reveal variants={children2}>
+          <div ref={scrollParentRef} className="scrolling-text">
+            <div className="scrolling-item">
+              Website
+              <br />
+              Developer
+            </div>
+            <div className="scrolling-item">Programmer</div>
+            <div className="scrolling-item">
+              UI/UX
+              <br />
+              Designer
+            </div>
+            <div className="scrolling-item">
+              Logo
+              <br />
+              Designer
+            </div>
+            <div className="scrolling-item">
+              Website
+              <br />
+              Developer
+            </div>
           </div>
-          <div className="scrolling-item">Programmer</div>
-          <div className="scrolling-item">
-            UI/UX
-            <br />
-            Designer
-          </div>
-          <div className="scrolling-item">
-            Logo
-            <br />
-            Designer
-          </div>
-          <div className="scrolling-item">
-            Website
-            <br />
-            Developer
-          </div>
-        </div>
-        <div className="backstory-tab">
+        </Reveal>
+        <Reveal variants={children2} className="backstory-tab">
           <span className="quote" />
           <p className="backstory">
             Graduated from an <span className="purple-text">almost-IT major</span> in one of most <span className="purple-text">favorite university</span> in Indonesia. The main focus is in{' '}
             <span className="purple-text">digital electronics</span> which requires <span className="purple-text">programming</span> most of the time, so I decided to deepen my programming skill as a{' '}
             <span className="purple-text">web developer</span> because I love visuals.
           </p>
-        </div>
-        <div className="learn-more">
-          <span className="text">
-            Learn more
-            <br />
-            about me
-          </span>
-          <span className="arrow" />
-        </div>
+        </Reveal>
+        <Reveal variants={children2} className="learn-more-btn">
+          <Link className="learn-more" href={'/about'}>
+            <span className="text">
+              Learn more
+              <br />
+              about me
+            </span>
+            <span className="arrow" />
+          </Link>
+        </Reveal>
       </div>
-    </main>
+    </motion.main>
   );
 };
 

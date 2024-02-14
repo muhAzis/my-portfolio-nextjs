@@ -1,0 +1,54 @@
+@keyframes panning {
+  0% {
+    translate: -100px;
+  }
+  50% {
+    translate: 100px;
+  }
+  100% {
+    translate: -100px;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    // rotate: 0deg;
+    rotate: 50deg;
+  }
+  // 25% {
+  // }
+  50% {
+    // rotate: 0deg;
+    rotate: -50deg;
+    // }
+    // 75% {
+  }
+  100% {
+    rotate: 50deg;
+  }
+}
+
+#loadingScreen {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100dvh;
+  gap: 40px;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-light);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#loadingLogo {
+  animation: panning 5s infinite ease-in-out, rotating 5s 1s infinite ease-in-out;
+}
+
+.loading-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}

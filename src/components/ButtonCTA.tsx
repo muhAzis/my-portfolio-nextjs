@@ -6,11 +6,17 @@ interface Props {
   action: () => void;
   className?: string;
   id?: string;
+  reverseColor?: boolean;
 }
 
-const ButtonCTA: React.FC<Props> = ({ children, action, className, id }) => {
+const ButtonCTA: React.FC<Props> = ({ children, action, className, id, reverseColor = false }) => {
   return (
-    <button id={id} className={className + ' call-to-action'} onClick={action}>
+    <button
+      id={id}
+      className={className + ' call-to-action'}
+      onClick={action}
+      style={reverseColor ? { backgroundColor: 'var(--clr-white)', color: 'var(--clr-text-dark)' } : { backgroundColor: 'var(--clr-dark)', color: 'var(--clr-text-white)' }}
+    >
       {children}
     </button>
   );

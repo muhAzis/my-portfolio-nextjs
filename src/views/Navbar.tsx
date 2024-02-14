@@ -3,6 +3,27 @@ import '@/styles/Navbar.scss';
 import ButtonCTA from '@/components/ButtonCTA';
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '@/components/Logo';
+import { motion } from 'framer-motion';
+
+const parent = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const children = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const children2 = {
+  hidden: { opacity: 0, y: -100 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const Navbar: React.FC = () => {
   const logoBtnRef = useRef<HTMLDivElement>(null);
@@ -37,28 +58,30 @@ const Navbar: React.FC = () => {
 
   return (
     <nav id="navbar" style={yOffset > 0 || menuActive ? { backgroundColor: 'rgba(245, 245, 245, 0.3)', backdropFilter: 'blur(20px)', boxShadow: 'var(--box-shadow-lite1)' } : {}}>
-      <div className="navbar-container">
+      <motion.div variants={parent} initial="hidden" animate="visible" className="navbar-container">
         <div ref={logoBtnRef} className="logo">
-          <Logo style={{ width: '50px', height: 'fit-content' }} />
+          <Logo variants={children} style={{ width: '50px', height: 'fit-content' }} />
         </div>
         <ul className={menuActive ? 'menu-list active' : 'menu-list'}>
-          <li onClick={() => setMenuActive(false)} className="menu-item">
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#hero">Home</a>
-          </li>
-          <li onClick={() => setMenuActive(false)} className="menu-item">
+          </motion.li>
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#skills">Skills</a>
-          </li>
-          <li onClick={() => setMenuActive(false)} className="menu-item">
+          </motion.li>
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#projects">Projects</a>
-          </li>
-          <li onClick={() => setMenuActive(false)} className="menu-item">
+          </motion.li>
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <ButtonCTA action={handleCTA}>Let&apos;s connect...</ButtonCTA>
-          </li>
-          <li onClick={() => setMenuActive(false)} id="downloadCV2" className="menu-item">
-            <ButtonCTA action={handleDownloadCV}>Download as CV</ButtonCTA>
-          </li>
+          </motion.li>
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} id="downloadCV2" className="menu-item">
+            <ButtonCTA action={handleDownloadCV} reverseColor={true}>
+              Download as CV
+            </ButtonCTA>
+          </motion.li>
         </ul>
-      </div>
+      </motion.div>
     </nav>
   );
 };
