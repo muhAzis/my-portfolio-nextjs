@@ -4,7 +4,7 @@ button {
   padding: 15px 20px;
   line-height: 95%;
   color: var(--clr-text-white);
-  border-radius: 30px;
+  border-radius: 20px;
   border: none;
   box-shadow: 0 0 10px 1px rgba(43, 43, 43, 0.5);
   cursor: pointer;
@@ -13,6 +13,7 @@ button {
 
   &:hover {
     box-shadow: 0 0 20px 2px var(--clr-pink);
+    transform: translateY(-5px);
   }
 
   &::before {
@@ -23,7 +24,7 @@ button {
     top: 0;
     left: 0;
     background: var(--clr-purple-gradient);
-    border-radius: 30px;
+    border-radius: 20px;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     z-index: -1;

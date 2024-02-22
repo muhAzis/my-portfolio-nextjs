@@ -3,7 +3,7 @@ import React from 'react';
 
 interface Props {
   children: React.ReactNode;
-  action: () => void;
+  action?: () => void;
   className?: string;
   id?: string;
   reverseColor?: boolean;
