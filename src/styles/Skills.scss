@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 30vh 7%;
+  padding: 10rem 7%;
   gap: 180px;
 
   .row1 {
@@ -66,7 +66,7 @@
         color: var(--clr-text-dark);
         background: var(--clr-glass-gradient);
         border-radius: 20px;
-        backdrop-filter: blur(50px);
+        backdrop-filter: blur(10px);
         box-shadow: 0 0 40px 1px rgba(144, 34, 229, 0.25);
 
         .skill-icon {
@@ -161,78 +161,14 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
-  #skills {
-    gap: 80px;
-
-    .row1 {
-      .title {
-        width: 35%;
-      }
-
-      .skill-cards {
-        width: 65%;
-        gap: 3%;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  #skills {
-    .row1 {
-      .skill-cards {
-        .card {
-          .skill-desc {
-            font-size: 0.9rem;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 992px) {
   #skills {
-    padding: 20vh 7%;
-
     .row1 {
-      flex-direction: column;
-      gap: 50px;
-
-      .title {
-        width: 100%;
-      }
-
       .skill-cards {
-        width: 100%;
+        flex-direction: column;
 
-        .card {
-          .skill-desc {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-
-    .row2 {
-      flex-direction: column;
-      gap: 40px;
-
-      .tech-title {
-        width: 100%;
-      }
-
-      .prog-stacks {
-        width: 100%;
-
-        .icons {
-          order: 2;
-          justify-content: flex-end;
-        }
-
-        .tech-image {
-          order: 1;
+        .col2 {
+          margin-top: 0;
         }
       }
     }
@@ -241,17 +177,16 @@
 
 @media screen and (max-width: 768px) {
   #skills {
-    padding: 10vh 7%;
-
-    .row1 {
-      .skill-cards {
-        .card {
-          .skill-icon {
+    .row2 {
+      .prog-stacks {
+        .icons {
+          .icon {
+            height: 40px;
             width: 40px;
-          }
 
-          .skill-desc {
-            font-size: 0.9rem;
+            .icon-image {
+              height: 20px;
+            }
           }
         }
       }
@@ -262,28 +197,36 @@
 @media screen and (max-width: 576px) {
   #skills {
     .row1 {
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+
+      .section-desc {
+        position: static;
+      }
+
       .skill-cards {
-        flex-direction: column;
-        max-width: 300px;
-        align-self: center;
+        .col2 {
+          margin-top: 0;
+        }
       }
     }
 
     .row2 {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+
+      .section-desc {
+        position: static;
+      }
+
       .prog-stacks {
-        flex-direction: column;
-        height: 300px;
+        max-width: 100%;
+        gap: 20px;
 
         .icons {
-          width: 100%;
-          order: 1;
           justify-content: center;
-        }
-
-        .tech-image {
-          width: 100%;
-          height: 100%;
-          order: 2;
         }
       }
     }
