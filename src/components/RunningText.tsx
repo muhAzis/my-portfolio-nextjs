@@ -4,7 +4,7 @@ import '@/styles/RunningText.scss';
 
 const RunningText: React.FC = () => {
   return (
-    <Marquee className="running-text">
+    <Marquee className="running-text" style={{ backgroundColor: 'var(--clr-white)' }}>
       <span className="marquee-text">
         Fullstack Web Developer
         <span className="dot" />

@@ -2,7 +2,9 @@ import Logo from '@/components/Logo';
 import Reveal from '@/components/animations/Reveal';
 import '@/styles/Contacts.scss';
 import { Variants, motion } from 'framer-motion';
+import Link from 'next/link';
 import React from 'react';
+import Marquee from 'react-fast-marquee';
 
 const parent: Variants = {
   hidden: { opacity: 0 },
@@ -27,21 +29,47 @@ const logo: Variants = {
 const Contacts: React.FC = () => {
   return (
     <main id="contacts">
-      <Reveal always={true} variants={parent} className="col1">
-        <motion.h2 variants={children} className="interested">
-          <span className="gradient-text">Interested</span> in
-          <br />
-          my skill?
-        </motion.h2>
-        <motion.h3 variants={children} className="discuss">
-          Or have any
-          <br />
-          <span className="gradient-text">project</span> to
-          <br />
-          discuss?
-        </motion.h3>
+      <Reveal always={true} variants={parent} className="row1">
+        <Marquee>
+          <motion.span variants={children} className="marquee-text">
+            Interested in my skill?
+            <span className="dot" />
+            Want to connect?
+            <span className="dot" />
+            Have a project to discuss?
+            <span className="dot" />
+          </motion.span>
+        </Marquee>
       </Reveal>
-      <Reveal always={true} variants={parent} className="col2">
+      <Reveal always={true} variants={parent} className="row2">
+        <motion.div variants={children} className="logo-container">
+          <Logo
+            variants={logo}
+            style={{
+              height: '100%',
+              fill: 'var(--clr-white)',
+            }}
+          />
+        </motion.div>
+        <div className="section">
+          <motion.div variants={children} className="sub-title">
+            This page
+          </motion.div>
+          <motion.a variants={children} href="#hero" className="item-page">
+            Home
+          </motion.a>
+          <motion.a variants={children} href="#skills" className="item-page">
+            Skills
+          </motion.a>
+          <motion.a variants={children} href="#projects" className="item-page">
+            Projects
+          </motion.a>
+          <Link href="/about" target="_blank">
+            <motion.span variants={children} className="item-page">
+              More about me &gt;
+            </motion.span>
+          </Link>
+        </div>
         <div className="section">
           <motion.div variants={children} className="sub-title">
             Contact me
@@ -74,23 +102,22 @@ const Contacts: React.FC = () => {
           </motion.a>
         </div>
       </Reveal>
-      <Reveal always={true} variants={parent} className="col3">
-        <Logo
-          variants={logo}
-          style={{
-            width: '100%',
-            height: '100%',
-            fill: 'url(#my-gradient)',
-            stroke: 'var(--clr-white)',
-            strokeWidth: '2px ',
-            strokeOpacity: '0.2',
-          }}
-        >
-          <linearGradient id="my-gradient" x2="1" y2="1">
-            <stop offset="0%" stopColor="rgba(144, 34, 229, 0.1)" />
-            <stop offset="100%" stopColor="rgba(43, 43, 43, 0.1)" />
-          </linearGradient>
-        </Logo>
+      <Reveal always={true} variants={parent} className="row3">
+        <motion.div className="rows">
+          <div className="text">Repository of this website:</div>
+          <a href="https://github.com/muhAzis/my-protfolio-nextjs" target="_blank" className="repo-link">
+            <span>https://github.com/muhAzis/my-protfolio-nextjs</span> <span className="bi bi-box-arrow-up-right" />
+          </a>
+        </motion.div>
+        <motion.div className="rows">
+          <div className="text">Build using:</div>
+          <div className="tech-stack">
+            <img src="/Typescript.png" alt="typescript" className="tech-logo" />
+            <img src="/React.png" alt="react" className="tech-logo" />
+            <img src="/nextjs.svg" alt="next" className="tech-logo" />
+            <img src="/framer-motion.svg" alt="framer-motion" className="tech-logo" />
+          </div>
+        </motion.div>
       </Reveal>
     </main>
   );

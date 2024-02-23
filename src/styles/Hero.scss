@@ -7,6 +7,7 @@
   max-height: 1080px;
   padding-inline: 7%;
   padding-block: 5% 2%;
+  background-color: var(--clr-white);
   justify-content: center;
 
   .marquee-back {
@@ -19,7 +20,7 @@
     font-size: 30rem;
     font-weight: 700;
     transform: translate(-50%, -50%);
-    z-index: -1;
+    z-index: 0;
   }
 
   .hero-container {
