@@ -1,0 +1,20 @@
+.running-text {
+  width: 100%;
+}
+
+.marquee-text {
+  display: flex;
+  margin-left: 40px;
+  gap: 40px;
+  color: var(--clr-text-light);
+  font-size: 3rem;
+  font-weight: 700;
+  align-items: center;
+
+  .dot {
+    width: 30px;
+    height: 30px;
+    background-color: var(--clr-text-light);
+    border-radius: 50%;
+  }
+}
