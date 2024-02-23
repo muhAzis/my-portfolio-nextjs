@@ -4,6 +4,7 @@ import ButtonCTA from '@/components/ButtonCTA';
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '@/components/Logo';
 import { motion } from 'framer-motion';
+import { useOffset } from '@/hooks/useOffset';
 
 const parent = {
   hidden: { opacity: 0 },
@@ -28,16 +29,8 @@ const children2 = {
 const Navbar: React.FC = () => {
   const logoBtnRef = useRef<HTMLDivElement>(null);
 
-  const [yOffset, setYOffset] = useState<number>(0);
+  const yOffset = useOffset();
   const [menuActive, setMenuActive] = useState<boolean>(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setYOffset(window.pageYOffset);
-    });
-
-    return () => window.removeEventListener('scroll', () => {});
-  }, [setYOffset]);
 
   useEffect(() => {
     if (logoBtnRef.current) {

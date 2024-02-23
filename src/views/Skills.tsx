@@ -19,41 +19,63 @@ const children2: Variants = {
 };
 
 const Skills: React.FC = () => {
-  const progIcons = ['HTML', 'CSS', 'Javascript', 'Typescript', 'Node', 'React', 'Next', 'C', 'CPP', 'Python', 'PHP', 'Golang', 'Bootstrap', 'MongoDB', 'MySQL', 'GIT', 'VS Code'];
+  const progIcons = ['HTML', 'CSS', 'Javascript', 'Typescript', 'Node', 'React', 'Next', 'C', 'CPP', 'Python', 'Bootstrap', 'MongoDB', 'GIT', 'VS Code'];
 
   return (
     <main id="skills">
       <Reveal always={true} variants={parent} className="row1">
-        <motion.h2 variants={children} className="title">
-          What <span className="gradient-text">skills</span>
-          <br />I am good at
-        </motion.h2>
+        <div className="section-desc">
+          <motion.h2 variants={children} className="title">
+            What <span className="gradient-text">skills</span>
+            <br />I am good at
+          </motion.h2>
+          <motion.p variants={children} className="desc">
+            These are some skills that I oftenly practice and implement when I working on a project
+          </motion.p>
+        </div>
         <div className="skill-cards">
-          <motion.div variants={children} className="card">
-            <img src="/Code.png" alt="clean-code" className="skill-icon" />
-            <p className="skill-desc">Clean and readable code to ease the web maintain and debug</p>
-          </motion.div>
-          <motion.div variants={children} className="card">
-            <img src="/Device.png" alt="responsive layout" className="skill-icon" />
-            <p className="skill-desc">Responsive web layout to fit the layout with various different devices</p>
-          </motion.div>
-          <motion.div variants={children} className="card">
-            <img src="/Layout.png" alt="minimlaist design" className="skill-icon" />
-            <p className="skill-desc">Minimalist web design to please the user with an aesthetic modern design</p>
-          </motion.div>
+          <div className="col1">
+            <motion.div variants={children} className="card">
+              <img src="/Code.svg" alt="clean-code" className="skill-icon" />
+              <div className="skill-name">Clean Code</div>
+              <p className="skill-desc">I make the code to be readable and easy to maintain</p>
+            </motion.div>
+            <motion.div variants={children} className="card">
+              <img src="/Layout.svg" alt="minimlaist design" className="skill-icon" />
+              <div className="skill-name">Minimalist Design</div>
+              <p className="skill-desc">Simple and easy to understand UI to comfort the user&apos;s experience</p>
+            </motion.div>
+          </div>
+          <div className="col2">
+            <motion.div variants={children} className="card">
+              <img src="/Device.svg" alt="responsive layout" className="skill-icon" />
+              <div className="skill-name">Responsive Layout</div>
+              <p className="skill-desc">Compatibility to any device&apos;s screen size</p>
+            </motion.div>
+            <motion.div variants={children} className="card">
+              <img src="/Tech.svg" alt="modern tech" className="skill-icon" />
+              <div className="skill-name">Latest Technology</div>
+              <p className="skill-desc">Following the tech trends based on the project&apos;s needs</p>
+            </motion.div>
+          </div>
         </div>
       </Reveal>
       <Reveal always={true} variants={parent} className="row2">
-        <motion.h4 variants={children} className="tech-title">
-          <span className="gradient-text">Technology</span>
-          <br />I currently can use
-        </motion.h4>
+        <div className="section-desc">
+          <motion.h3 variants={children} className="tech-title">
+            <span className="gradient-text">Technology</span>
+            <br />I currently can use
+          </motion.h3>
+          <motion.p variants={children} className="tech-desc">
+            These are the techs that I usually use to develop a project, yet there will be moe added to the list in the future
+          </motion.p>
+        </div>
         <div className="prog-stacks">
           <motion.div variants={children} className="icons">
             {progIcons.map((icon, index) => (
-              <div key={index} className="icon">
-                <motion.img variants={children2} className="icon-image" src={`/${icon}.png`} alt={icon} style={{ width: '100%', objectFit: 'cover' }} />
-              </div>
+              <motion.div variants={children2} key={index} className="icon">
+                <img className="icon-image" src={`/${icon}.png`} alt={icon} />
+              </motion.div>
             ))}
           </motion.div>
           <motion.div variants={children} className="tech-image" />

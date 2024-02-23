@@ -8,6 +8,7 @@ import Marquee from 'react-fast-marquee';
 import { Variants, motion } from 'framer-motion';
 import Reveal from '@/components/animations/Reveal';
 import { useViewport } from '@/hooks/useViewport';
+import { useOffset } from '@/hooks/useOffset';
 
 const parent: Variants = {
   hidden: { opacity: 0 },
