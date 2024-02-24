@@ -14,11 +14,23 @@
   height: 80px;
   bottom: 10%;
   right: 5%;
-  background: var(--clr-purple-trans-gradient);
+  background-color: var(--clr-white);
   border-radius: 50%;
   box-shadow: 0 0 40px 1px rgba(144, 34, 229, 0.5);
   place-content: center;
   overflow: hidden;
   cursor: pointer;
   z-index: 998;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--clr-purple-trans-gradient);
+    border-radius: 50%;
+    z-index: -1;
+  }
 }

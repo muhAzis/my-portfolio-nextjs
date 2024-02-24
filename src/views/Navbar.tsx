@@ -3,7 +3,7 @@ import '@/styles/Navbar.scss';
 import ButtonCTA from '@/components/ButtonCTA';
 import React, { useEffect, useRef, useState } from 'react';
 import Logo from '@/components/Logo';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useOffset } from '@/hooks/useOffset';
 
 const parent = {
@@ -29,6 +29,10 @@ const children2 = {
 const Navbar: React.FC = () => {
   const logoBtnRef = useRef<HTMLDivElement>(null);
 
+  const { scrollYProgress } = useScroll();
+  const progressBounce = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
+  const progressBar = useTransform(progressBounce, [0, 1], ['0%', '100%']);
+
   const yOffset = useOffset();
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
@@ -42,7 +46,7 @@ const Navbar: React.FC = () => {
   }, [menuActive]);
 
   const handleCTA = (): void => {
-    location.href = '#contacts';
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   const handleDownloadCV = (): void => {
@@ -51,6 +55,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav id="navbar" style={yOffset > 0 || menuActive ? { backgroundColor: 'rgba(245, 245, 245, 0.3)', backdropFilter: 'blur(20px)', boxShadow: 'var(--box-shadow-lite1)' } : {}}>
+      <motion.div className="progress-bar" style={{ width: progressBar }} />
       <motion.div variants={parent} initial="hidden" animate="visible" className="navbar-container">
         <div ref={logoBtnRef} className="logo">
           <Logo variants={children} style={{ width: '50px', height: 'fit-content' }} />

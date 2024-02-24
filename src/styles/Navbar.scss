@@ -1,12 +1,29 @@
 #navbar {
   position: fixed;
   display: flex;
+  flex-direction: column;
   width: 100dvw;
   top: 0;
   left: 0;
   transition: all 0.5s ease-in-out;
   justify-content: center;
   z-index: 999;
+
+  .progress-bar {
+    position: relative;
+    height: 5px;
+    transform-origin: left;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100dvw;
+      height: 100%;
+      background: var(--clr-purple-gradient);
+      animation: progress 5s infinite;
+    }
+  }
 
   .navbar-container {
     display: flex;

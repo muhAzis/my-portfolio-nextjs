@@ -3,19 +3,21 @@ import { Variants, motion, useAnimation, useInView } from 'framer-motion';
 import { useViewport } from '@/hooks/useViewport';
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   variants: Variants;
   className?: string;
   always?: boolean;
+  margin?: string;
+  once?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
-const Reveal: React.FC<Props> = ({ children, variants, className, always = false }) => {
+const Reveal: React.FC<Props> = ({ children, variants, className, always = false, margin = '-300px 0px -200px 0px', once = false }) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   const [width, height] = useViewport();
 
-  const isInView = useInView(elementRef, { once: false, margin: '-100px 0px -200px 0px' });
+  const isInView = useInView(elementRef, { once, margin });
   const mainControls = useAnimation();
 
   useEffect(() => {

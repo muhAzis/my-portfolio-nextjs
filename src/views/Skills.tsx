@@ -9,14 +9,16 @@ const parent: Variants = {
 };
 
 const children: Variants = {
-  hidden: { opacity: 0, y: '50%' },
-  visible: { opacity: 1, y: '0%', transition: { duration: 0.3, staggerChildren: 0.03 } },
+  hidden: { opacity: 0, x: '50%' },
+  visible: { opacity: 1, x: '0%', transition: { duration: 0.3, staggerChildren: 0.03 } },
 };
 
 const children2: Variants = {
   hidden: { opacity: 0, y: '50%' },
   visible: { opacity: 1, y: '0%', transition: { duration: 0.2 } },
 };
+
+const margin = '-300px 0px -200px 0px';
 
 const Skills: React.FC = () => {
   const progIcons = ['HTML', 'CSS', 'Javascript', 'Typescript', 'Node', 'React', 'Next', 'C', 'CPP', 'Python', 'Bootstrap', 'MongoDB', 'GIT', 'VS Code'];
@@ -35,28 +37,28 @@ const Skills: React.FC = () => {
         </div>
         <div className="skill-cards">
           <div className="col1">
-            <motion.div variants={children} className="card">
+            <Reveal always={true} variants={children} margin={margin} className="card">
               <img src="/Code.svg" alt="clean-code" className="skill-icon" />
               <div className="skill-name">Clean Code</div>
               <p className="skill-desc">I make the code to be readable and easy to maintain</p>
-            </motion.div>
-            <motion.div variants={children} className="card">
+            </Reveal>
+            <Reveal always={true} variants={children} margin={margin} className="card">
               <img src="/Layout.svg" alt="minimlaist design" className="skill-icon" />
               <div className="skill-name">Minimalist Design</div>
               <p className="skill-desc">Simple and easy to understand UI to comfort the user&apos;s experience</p>
-            </motion.div>
+            </Reveal>
           </div>
           <div className="col2">
-            <motion.div variants={children} className="card">
+            <Reveal always={true} variants={children} margin={margin} className="card">
               <img src="/Device.svg" alt="responsive layout" className="skill-icon" />
               <div className="skill-name">Responsive Layout</div>
               <p className="skill-desc">Compatibility to any device&apos;s screen size</p>
-            </motion.div>
-            <motion.div variants={children} className="card">
+            </Reveal>
+            <Reveal always={true} variants={children} margin={margin} className="card">
               <img src="/Tech.svg" alt="modern tech" className="skill-icon" />
               <div className="skill-name">Latest Technology</div>
               <p className="skill-desc">Following the tech trends based on the project&apos;s needs</p>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
       </Reveal>
@@ -71,14 +73,14 @@ const Skills: React.FC = () => {
           </motion.p>
         </div>
         <div className="prog-stacks">
-          <motion.div variants={children} className="icons">
+          <Reveal always={true} variants={children} className="icons">
             {progIcons.map((icon, index) => (
               <motion.div variants={children2} key={index} className="icon">
                 <img className="icon-image" src={`/${icon}.png`} alt={icon} />
               </motion.div>
             ))}
-          </motion.div>
-          <motion.div variants={children} className="tech-image" />
+          </Reveal>
+          <Reveal always={true} variants={children} className="tech-image" />
         </div>
       </Reveal>
     </main>

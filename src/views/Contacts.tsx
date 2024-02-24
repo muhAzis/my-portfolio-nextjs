@@ -1,9 +1,11 @@
 import Logo from '@/components/Logo';
 import Reveal from '@/components/animations/Reveal';
+import { useOffset } from '@/hooks/useOffset';
+import { useViewport } from '@/hooks/useViewport';
 import '@/styles/Contacts.scss';
 import { Variants, motion } from 'framer-motion';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 
 const parent: Variants = {
@@ -26,10 +28,29 @@ const logo: Variants = {
   visible: { opacity: 1, y: '0%', transition: { duration: 1 } },
 };
 
+const margin = '300px 0px -300px 0px';
+
 const Contacts: React.FC = () => {
+  const contactsRef = useRef<HTMLDivElement>(null);
+  const [width, height] = useViewport();
+  const yOffset = useOffset();
+
+  const [contactHeight, setContactHeight] = useState<number>(0);
+  const [isOffset, setIsOffset] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (contactsRef.current) {
+      setContactHeight(contactsRef.current.clientHeight);
+    }
+  }, [setContactHeight]);
+
+  useEffect(() => {
+    setIsOffset(!(yOffset < 992));
+  }, [yOffset]);
+
   return (
-    <main id="contacts">
-      <Reveal always={true} variants={parent} className="row1">
+    <main id="contacts" ref={contactsRef} style={{ position: 'sticky', bottom: contactHeight > height ? -(contactHeight - height) : 0 }}>
+      <Reveal always={isOffset} variants={parent} margin={margin} className="row1">
         <Marquee>
           <motion.span variants={children} className="marquee-text">
             Interested in my skill?
@@ -41,17 +62,32 @@ const Contacts: React.FC = () => {
           </motion.span>
         </Marquee>
       </Reveal>
-      <Reveal always={true} variants={parent} className="row2">
-        <motion.div variants={children} className="logo-container">
+      <div className="row2">
+        <Reveal always={isOffset} variants={children} margin={margin} className="logo-container">
           <Logo
             variants={logo}
             style={{
               height: '100%',
-              fill: 'var(--clr-white)',
+              // fill: 'var(--clr-white)',
+              fill: 'url(#grad)',
+              textShadow: 'var(--box-purple)',
+              filter: 'url(#f2)',
             }}
-          />
-        </motion.div>
-        <div className="section">
+          >
+            <defs>
+              <filter id="f2" width="120" height="120">
+                <feOffset in="SourceGraphic" dx="0" dy="0" />
+                <feGaussianBlur stdDeviation="20" />
+                <feBlend in="SourceGraphic" in2="blurOut" />
+              </filter>
+              <linearGradient id="grad" x1="50%" x2="50%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#9022e5" />
+                <stop offset="100%" stop-color="#db8bdd" />
+              </linearGradient>
+            </defs>
+          </Logo>
+        </Reveal>
+        <Reveal always={isOffset} variants={parent} margin={margin} className="section">
           <motion.div variants={children} className="sub-title">
             This page
           </motion.div>
@@ -69,19 +105,19 @@ const Contacts: React.FC = () => {
               More about me &gt;
             </motion.span>
           </Link>
-        </div>
-        <div className="section">
+        </Reveal>
+        <Reveal always={isOffset} variants={parent} margin={margin} className="section">
           <motion.div variants={children} className="sub-title">
             Contact me
           </motion.div>
-          <motion.a variants={children} href="" target="_blank" className="item">
+          <motion.a variants={children} href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwQnlTWsPfmXxSGtGCHmBWRhPXJxVBlrWWCjcKkCVPzLVMDbrGWlFqnJCPRVdGglHFwRmJJ" target="_blank" className="item">
             <i className="bi bi-google" /> muhabdulazis555@gmail.com
           </motion.a>
           <motion.a variants={children} href="https://wa.me/6288226389456" target="_blank" className="item">
             <i className="bi bi-whatsapp" /> +62 882-2638-9456
           </motion.a>
-        </div>
-        <div className="section">
+        </Reveal>
+        <Reveal always={isOffset} variants={parent} margin={margin} className="section">
           <motion.div variants={children} className="sub-title">
             Let&apos;s connect
           </motion.div>
@@ -100,9 +136,9 @@ const Contacts: React.FC = () => {
           <motion.a variants={children} href="https://web.facebook.com/muh.ab.azis" target="_blank" className="item">
             <i className="bi bi-facebook" /> Muhammad Abdul Azis
           </motion.a>
-        </div>
-      </Reveal>
-      <Reveal always={true} variants={parent} className="row3">
+        </Reveal>
+      </div>
+      <Reveal always={isOffset} variants={parent} className="row3">
         <motion.div className="rows">
           <div className="text">Repository of this website:</div>
           <a href="https://github.com/muhAzis/my-protfolio-nextjs" target="_blank" className="repo-link">
