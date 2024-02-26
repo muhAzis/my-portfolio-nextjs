@@ -33,16 +33,10 @@ const children2: Variants = {
 const Hero: React.FC = () => {
   const [width, height] = useViewport();
   const heroRef = useRef<HTMLDivElement>(null);
-  const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress: heroContProgress } = useScroll({
     target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const { scrollYProgress: leftProgress } = useScroll({
-    target: leftRef,
     offset: ['start start', 'end start'],
   });
 
@@ -52,9 +46,9 @@ const Hero: React.FC = () => {
   });
 
   const heroProgress = useTransform(rightProgress, [0, 1], ['0%', '-20%']);
-  const heroTextProgress = useTransform(leftProgress, [0, 1], ['0%', '-50%']);
+  const heroTextProgress = useTransform(heroContProgress, [0, 1], ['0%', '-50%']);
   const heroText2Progress = useTransform(heroContProgress, [0, 1], ['0%', '50%']);
-  const heroTransProgress = useTransform(leftProgress, [0, 1], [1, 0]);
+  const heroTransProgress = useTransform(heroContProgress, [0, 1], [1, 0]);
   const heroTrans2Progress = useTransform(rightProgress, [0, 1], [1, 0]);
 
   const handleCTA1 = (): void => {
@@ -70,7 +64,6 @@ const Hero: React.FC = () => {
       </motion.div>
       <div className="hero-container">
         <motion.div
-          ref={leftRef}
           variants={{
             hidden: { maxHeight: '0px' },
             visible: { maxHeight: '935px', transition: { duration: 1 } },
