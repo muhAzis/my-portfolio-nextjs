@@ -32,8 +32,14 @@ const children2: Variants = {
 
 const Hero: React.FC = () => {
   const [width, height] = useViewport();
+  const heroRef = useRef<HTMLDivElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress: heroContProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
 
   const { scrollYProgress: leftProgress } = useScroll({
     target: leftRef,
@@ -47,7 +53,7 @@ const Hero: React.FC = () => {
 
   const heroProgress = useTransform(rightProgress, [0, 1], ['0%', '-20%']);
   const heroTextProgress = useTransform(leftProgress, [0, 1], ['0%', '-50%']);
-  const heroText2Progress = useTransform(leftProgress, [0, 1], ['0%', '50%']);
+  const heroText2Progress = useTransform(heroContProgress, [0, 1], ['0%', '50%']);
   const heroTransProgress = useTransform(leftProgress, [0, 1], [1, 0]);
   const heroTrans2Progress = useTransform(rightProgress, [0, 1], [1, 0]);
 
@@ -56,7 +62,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <motion.main id="hero" variants={parent} initial="hidden" animate="visible">
+    <motion.main ref={heroRef} id="hero" variants={parent} initial="hidden" animate="visible">
       <motion.div className="marquee-container" style={{ y: heroText2Progress }}>
         <Marquee className="marquee-back" speed={100}>
           <span>uhamad Abdul Azis M</span>
