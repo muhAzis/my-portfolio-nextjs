@@ -68,21 +68,20 @@ const Contacts: React.FC = () => {
             variants={logo}
             style={{
               height: '100%',
-              // fill: 'var(--clr-white)',
               fill: 'url(#grad)',
               textShadow: 'var(--box-purple)',
               filter: 'url(#f2)',
             }}
           >
             <defs>
-              <filter id="f2" width="120" height="120">
+              <filter id="f2" width="200" height="200">
                 <feOffset in="SourceGraphic" dx="0" dy="0" />
-                <feGaussianBlur stdDeviation="20" />
+                <feGaussianBlur stdDeviation="10" />
                 <feBlend in="SourceGraphic" in2="blurOut" />
               </filter>
               <linearGradient id="grad" x1="50%" x2="50%" y1="0%" y2="100%">
-                <stop offset="0%" stop-color="#9022e5" />
-                <stop offset="100%" stop-color="#db8bdd" />
+                <stop offset="0%" stopColor="#c8d746" />
+                <stop offset="100%" stopColor="#f7e298" />
               </linearGradient>
             </defs>
           </Logo>

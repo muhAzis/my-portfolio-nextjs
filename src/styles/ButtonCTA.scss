@@ -3,17 +3,23 @@ button {
   width: fit-content;
   padding: 15px 20px;
   line-height: 95%;
-  color: var(--clr-text-white);
+  color: var(--clr-text-dark);
+  background-color: var(--clr-white);
   border-radius: 20px;
   border: none;
-  box-shadow: 0 0 10px 1px rgba(43, 43, 43, 0.5);
+  box-shadow: 0 0 10px 1px rgba(253, 250, 243, 0.5);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   z-index: 1;
 
   &:hover {
-    box-shadow: 0 0 20px 2px var(--clr-pink);
+    color: var(--clr-text-white);
+    box-shadow: 0 0 20px 2px var(--clr-ambitious-rose);
     transform: translateY(-5px);
+
+    &::before {
+      opacity: 1;
+    }
   }
 
   &::before {
@@ -23,15 +29,11 @@ button {
     height: 100%;
     top: 0;
     left: 0;
-    background: var(--clr-purple-gradient);
+    background: var(--clr-cta-gradient);
     border-radius: 20px;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     z-index: -1;
-  }
-
-  &:hover::before {
-    opacity: 1;
   }
 
   &:active {

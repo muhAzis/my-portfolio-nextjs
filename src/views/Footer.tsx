@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
 
 const Copyright = () => {
   return (
-    <svg id="copyright" width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-light)' }} xmlns="http://www.w3.org/2000/svg">
+    <svg id="copyright" width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-white)' }} xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

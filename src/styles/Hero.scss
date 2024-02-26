@@ -7,21 +7,24 @@
   max-height: 1080px;
   padding-inline: 7%;
   padding-block: 5% 2%;
-  background-color: var(--clr-white);
+  background-color: var(--clr-dark);
   justify-content: center;
   z-index: 1;
 
-  .marquee-back {
+  .marquee-container {
     position: absolute;
     width: 100dvw;
-    top: 50%;
-    left: 50%;
-    color: var(--clr-lighter);
-    color: rgba(144, 34, 229, 0.1);
-    font-size: 30rem;
-    font-weight: 700;
-    transform: translate(-50%, -50%);
+    left: 0;
     z-index: 0;
+
+    .marquee-back {
+      width: 100%;
+      color: var(--clr-text-white);
+      font-size: 30rem;
+      font-weight: 700;
+      opacity: 0.05;
+      cursor: default;
+    }
   }
 
   .hero-container {
@@ -155,8 +158,8 @@
             font-weight: 700;
           }
 
-          .purple-text {
-            color: var(--clr-purple);
+          .highlighted-text {
+            color: var(--clr-rainforest-glow);
           }
         }
 

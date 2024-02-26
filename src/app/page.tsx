@@ -8,18 +8,22 @@ import Contacts from '@/views/Contacts';
 import Footer from '@/views/Footer';
 import Hero from '@/views/Hero';
 import Navbar from '@/views/Navbar';
+import Projects from '@/views/Projects';
 import Skills from '@/views/Skills';
+import WelcomeScreen from '@/views/WelcomeScreen';
 
 export default function Home() {
   return (
     <ViewportContextProvider>
       <VerticalOffsetContextProvider>
         <div id="app">
+          <WelcomeScreen />
           <Navbar />
           <TopButton />
           <Hero />
           <RunningText />
           <Skills />
+          <Projects />
           <Contacts />
           <Footer />
         </div>

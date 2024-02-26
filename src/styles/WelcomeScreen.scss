@@ -1,0 +1,56 @@
+#welcomeScreen {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  background-color: var(--clr-dark);
+  overflow: hidden;
+  z-index: 1000;
+
+  .welcome-container {
+    position: relative;
+    display: flex;
+    width: 100dvw;
+    max-width: 1920px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .welcome-text {
+      display: flex;
+      flex-direction: column;
+      height: 100px;
+      color: var(--clr-text-white);
+      font-size: 5rem;
+      font-weight: 700;
+      align-items: center;
+      overflow-y: hidden;
+
+      .texts {
+        line-height: 100px;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #welcomeScreen {
+    .welcome-container {
+      .welcome-text {
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #welcomeScreen {
+    .welcome-container {
+      .welcome-text {
+        font-size: 8vw;
+      }
+    }
+  }
+}

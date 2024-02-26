@@ -16,11 +16,20 @@
   right: 5%;
   background-color: var(--clr-white);
   border-radius: 50%;
-  box-shadow: 0 0 40px 1px rgba(144, 34, 229, 0.5);
+  box-shadow: 0 0 20px 1px rgba(200, 215, 70, 0.5);
   place-content: center;
+  transition: box-shadow 0.2s ease-in-out;
   overflow: hidden;
   cursor: pointer;
   z-index: 998;
+
+  &:hover {
+    box-shadow: 0 0 40px 1px rgba(200, 215, 70, 0.5);
+
+    &::before {
+      opacity: 0.5;
+    }
+  }
 
   &::before {
     content: '';
@@ -29,8 +38,10 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: var(--clr-purple-trans-gradient);
+    background: var(--clr-trans-gradient);
     border-radius: 50%;
+    opacity: 0.2;
+    transition: opacity 0.2s ease-in-out;
     z-index: -1;
   }
 }

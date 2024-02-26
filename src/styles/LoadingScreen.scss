@@ -1,30 +1,9 @@
-@keyframes panning {
+@keyframes spinning {
   0% {
-    translate: -100px;
-  }
-  50% {
-    translate: 100px;
+    transform: rotateY(0deg);
   }
   100% {
-    translate: -100px;
-  }
-}
-
-@keyframes rotating {
-  0% {
-    // rotate: 0deg;
-    rotate: 50deg;
-  }
-  // 25% {
-  // }
-  50% {
-    // rotate: 0deg;
-    rotate: -50deg;
-    // }
-    // 75% {
-  }
-  100% {
-    rotate: 50deg;
+    transform: rotateY(360deg);
   }
 }
 
@@ -44,7 +23,7 @@
 }
 
 #loadingLogo {
-  animation: panning 5s infinite ease-in-out, rotating 5s 1s infinite ease-in-out;
+  animation: spinning 5s infinite linear;
 }
 
 .loading-text {

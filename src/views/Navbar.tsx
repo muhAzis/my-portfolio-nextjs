@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
       <motion.div className="progress-bar" style={{ width: progressBar }} />
       <motion.div variants={parent} initial="hidden" animate="visible" className="navbar-container">
         <div ref={logoBtnRef} className="logo">
-          <Logo variants={children} style={{ width: '50px', height: 'fit-content' }} />
+          <Logo variants={children} style={{ width: '50px', height: 'fit-content', fill: 'var(--clr-white)' }} />
         </div>
         <ul className={menuActive ? 'menu-list active' : 'menu-list'}>
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
