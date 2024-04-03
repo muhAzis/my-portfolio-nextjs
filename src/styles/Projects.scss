@@ -3,9 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 10rem 7%;
-  color: var(--clr-blue-paisley);
-  background-color: var(--clr-serenity-sky);
+  background-color: var(--clr-white);
   align-items: center;
   z-index: 1;
 
@@ -16,23 +14,114 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url('/grainy-filter.svg');
-    opacity: 0.2;
+    background-image: url('/nnnoise.svg');
+    opacity: 0.3;
     z-index: -1;
   }
 
-  .projects-heading {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    gap: 30px;
+  #wave {
+    width: 100%;
+    height: fit-content;
+    transform: translateY(-10px);
+  }
 
-    .title {
-      line-height: 120%;
+  .projects-container {
+    display: flex;
+    width: 100%;
+    padding: 100px 100px 200px;
+    gap: 200px;
+    z-index: 1;
+    justify-content: center;
+
+    .projects-heading {
+      display: flex;
+
+      .heading-content {
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        height: fit-content;
+        top: 150px;
+        color: var(--clr-text-green);
+
+        .subtitle {
+          display: flex;
+          gap: 5px;
+          color: var(--clr-text-red);
+          font-weight: 700;
+          align-items: center;
+
+          .cakram-red {
+            animation: spin 5s linear infinite;
+          }
+        }
+
+        .title {
+          line-height: 120%;
+
+          .bold {
+            color: var(--clr-text-dark-green);
+          }
+        }
+
+        .desc {
+          margin-top: 30px;
+          font-size: 1.5rem;
+        }
+      }
     }
 
-    .sub-title {
-      font-size: 1.5rem;
+    .projects-section {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #projects {
+    .projects-container {
+      gap: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #projects {
+    .projects-container {
+      padding: 100px 50px 200px;
+      gap: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #projects {
+    .projects-container {
+      flex-direction: column;
+      align-items: center;
+
+      .projects-heading {
+        width: 100%;
+
+        .heading-content {
+          .desc {
+            margin-top: 20px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #projects {
+    .projects-container {
+      padding: 50px 20px 100px;
+      gap: 50px;
     }
   }
 }

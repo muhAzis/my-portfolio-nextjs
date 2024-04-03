@@ -1,0 +1,93 @@
+@keyframes loading {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.account-thumbnail {
+  position: absolute;
+  display: flex;
+  width: fit-content;
+  max-width: 500px;
+  padding: 20px;
+  gap: 20px;
+  bottom: calc(100% - 10px);
+  left: 0;
+  color: var(--clr-text-white);
+  background-color: var(--clr-dark);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow-medium);
+
+  .profile-image {
+    border-radius: 50%;
+  }
+
+  .account-info-tab {
+    display: flex;
+    flex-direction: column;
+
+    .info-header {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      .name-info {
+        display: flex;
+        flex-direction: column;
+
+        .account-username {
+          font-size: 1.2rem;
+          font-weight: 700;
+        }
+
+        .account-name {
+          font-size: 1rem;
+          opacity: 0.5;
+        }
+      }
+
+      .public-repos {
+        display: flex;
+        gap: 5px;
+        font-size: 0.9rem;
+        align-items: center;
+
+        .star {
+          margin-left: 5px;
+          color: var(--clr-text-yellow);
+        }
+      }
+    }
+
+    .account-url {
+      display: flex;
+      gap: 5px;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      align-items: center;
+
+      .bi {
+        font-size: 1rem;
+      }
+    }
+
+    .account-bio {
+      margin-block: 10px;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+  }
+}
+
+.loading-state {
+  border-radius: 5px;
+  animation: loading 2s infinite ease-in-out;
+}

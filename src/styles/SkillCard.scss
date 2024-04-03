@@ -1,0 +1,39 @@
+.skillcard {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 250px;
+  padding: 20px;
+  gap: 20px;
+  background-color: var(--clr-white);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow-medium);
+
+  .icon {
+    display: grid;
+    width: 60px;
+    height: 60px;
+    background-color: var(--clr-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 var(--clr-green);
+    place-content: center;
+  }
+
+  .skill-name {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .skill-desc {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .skillcard {
+    width: 100%;
+    max-width: 350px;
+    height: fit-content;
+  }
+}

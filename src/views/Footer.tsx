@@ -1,30 +1,108 @@
-'use client';
+import ContactCard from '@/components/ContactCard';
+import Logo from '@/components/Logo';
+import Reveal from '@/components/animations/Reveal';
+import { useOffset } from '@/hooks/useOffset';
+import { useViewport } from '@/hooks/useViewport';
 import '@/styles/Footer.scss';
-import React, { useEffect, useState } from 'react';
+import { Variants, motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
+import Marquee from 'react-fast-marquee';
+
+const parent: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const children: Variants = {
+  hidden: { opacity: 0, x: '-50%' },
+  visible: { opacity: 1, x: '0%', transition: { duration: 0.3, staggerChildren: 0.03 } },
+};
+
+const children2: Variants = {
+  hidden: { opacity: 0, y: '50%' },
+  visible: { opacity: 1, y: '0%', transition: { duration: 0.2 } },
+};
+
+const logo: Variants = {
+  hidden: { opacity: 0, y: '100%' },
+  visible: { opacity: 1, y: '0%', transition: { duration: 1 } },
+};
+
+const margin = '300px 0px -300px 0px';
 
 const Footer: React.FC = () => {
-  const [year, setYear] = useState(new Date().getFullYear());
+  const contactsRef = useRef<HTMLDivElement>(null);
+  const [width, height] = useViewport();
+  const yOffset = useOffset();
+
+  const [contactHeight, setContactHeight] = useState<number>(0);
+  const [isOffset, setIsOffset] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (contactsRef.current) {
+      setContactHeight(contactsRef.current.clientHeight);
+    }
+  }, [setContactHeight]);
+
+  useEffect(() => {
+    setIsOffset(!(yOffset < 992));
+  }, [yOffset]);
 
   return (
-    <footer id="footer">
-      <div className="copyright">
-        <Copyright />
-        <div className="copy-text">
-          <span>
-            <span className="bold-text">{year} All rights reserved</span>,
-          </span>
-          <span>
-            designed and developed by <span className="bold-text">Muhamad Abdul Azis</span>
-          </span>
+    <main id="contact">
+      <div className="contact-container">
+        <div className="row1">
+          <ContactCard link="" bIcon="bi bi-whatsapp" title="Whatsapp" contact="+62-882-2638-9456" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+          <Image src="/cakram-yellow.svg" alt="cakram yellow" className="cakram-yellow" width={30} height={30} />
+          <ContactCard link="" bIcon="bi bi-google" title="Muhamad Abdul Azis" contact="muhabdulazis555@gmail.com" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+          <Image src="/cakram-yellow.svg" alt="cakram yellow" className="cakram-yellow" width={30} height={30} />
+          <ContactCard link="" bIcon="bi bi-github" title="muhAzis" contact="github.com/muhAzis" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+        </div>
+        <div className="row2">
+          <div className="logo-full">
+            <Image src="/logo-full-green.svg" alt="Logo full" width={180} height={57} />
+          </div>
+          <p className="desc">If you are interested to know more detail about me or if you have a project to discuss you can reach me via my contacts</p>
+        </div>
+        <div className="row3">
+          <div className="copyright">
+            <Copyright />
+            <div className="copy-text">
+              <span className="bold">{new Date().getFullYear()} All rights reserved</span>
+              <br />
+              designed and developed by <span className="bold">Muhamad Abdul Azis</span>
+            </div>
+          </div>
+          <div className="connect">
+            <span className="connect-text">Let&apos;s connect!</span>
+            <div className="socmed">
+              <a href="https://www.linkedin.com/in/muhabdulazis" target="_blank" className="bi bi-linkedin" />
+              <a href="https://www.instagram.com/muh_abdulazis" target="_blank" className="bi bi-instagram" />
+              <a href="https://facebook.com/muh.ab.azis" target="_blank" className="bi bi-facebook" />
+              <a href="https://discordapp.com/users/891593433578364928" target="_blank" className="bi bi-discord" />
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+      <Marquee gradient={false} speed={100}>
+        <div className="marquee">
+          <span className="marquee-text">Interested in my skill?</span>
+          <Image src="/cakram-yellow.svg" alt="cakram red" className="cakram-yellow" width={80} height={80} />
+          <span className="marquee-text">Want to connect?</span>
+          <Image src="/cakram-yellow.svg" alt="cakram red" className="cakram-yellow" width={80} height={80} />
+          <span className="marquee-text">Have a project to discuss?</span>
+          <Image src="/cakram-yellow.svg" alt="cakram red" className="cakram-yellow" width={80} height={80} />
+        </div>
+      </Marquee>
+    </main>
   );
 };
 
 const Copyright = () => {
   return (
-    <svg id="copyright" width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-white)' }} xmlns="http://www.w3.org/2000/svg">
+    <svg id="copyright" width="20" height="20" viewBox="0 0 20 20" style={{ marginRight: '5px', fill: 'var(--clr-text-dark-green)' }} xmlns="http://www.w3.org/2000/svg">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

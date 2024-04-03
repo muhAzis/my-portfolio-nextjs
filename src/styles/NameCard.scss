@@ -1,0 +1,87 @@
+#nameCard {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  .profile-pic {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+
+    #profilePic {
+      background-color: var(--clr-light);
+      border-radius: 50%;
+      filter: grayscale(1);
+      transition: filter 0.3s ease-in-out;
+      box-shadow: var(--box-shadow-medium);
+
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
+
+    .status {
+      position: absolute;
+      display: flex;
+      padding: 5px 15px;
+      bottom: 10px;
+      left: 50%;
+      gap: 5px;
+      color: var(--clr-text-white);
+      font-size: 0.8rem;
+      font-weight: 600;
+      background-color: var(--clr-green-special);
+      border-radius: 30px;
+      box-shadow: 0 0 10px 1px var(--clr-green-special);
+      transform: translateX(-50%);
+      align-items: center;
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--clr-text-white);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    text-shadow: var(--text-shadow);
+
+    .greet {
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 100%;
+    }
+
+    .name {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 100%;
+    }
+
+    .proffesion {
+      margin-top: 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #nameCard {
+    flex-direction: column;
+    gap: 10px;
+
+    .profile-info {
+      align-items: center;
+
+      .name {
+        text-align: center;
+      }
+    }
+  }
+}

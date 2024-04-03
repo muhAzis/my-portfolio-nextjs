@@ -5,6 +5,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Logo from '@/components/Logo';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useOffset } from '@/hooks/useOffset';
+import Image from 'next/image';
+import { useViewport } from '@/hooks/useViewport';
 
 const parent = {
   hidden: { opacity: 0 },
@@ -27,56 +29,81 @@ const children2 = {
 };
 
 const Navbar: React.FC = () => {
-  const logoBtnRef = useRef<HTMLDivElement>(null);
-
+  const [width, height] = useViewport();
   const { scrollYProgress } = useScroll();
   const progressBounce = useSpring(scrollYProgress, { stiffness: 100, damping: 20 });
   const progressBar = useTransform(progressBounce, [0, 1], ['0%', '100%']);
 
-  const yOffset = useOffset();
   const [menuActive, setMenuActive] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (logoBtnRef.current) {
-      const button = logoBtnRef.current;
-      button.onclick = () => {
-        setMenuActive(!menuActive);
-      };
-    }
-  }, [menuActive]);
-
-  const handleCTA = (): void => {
+  const scrollToBottom = (): void => {
     window.scrollTo(0, document.body.scrollHeight);
   };
 
-  const handleDownloadCV = (): void => {
-    window.open('/Muh Abdul Azis CV.pdf', '_blank');
-  };
-
-  return (
-    <nav id="navbar" style={yOffset > 0 || menuActive ? { backgroundColor: 'rgba(245, 245, 245, 0.3)', backdropFilter: 'blur(20px)', boxShadow: 'var(--box-shadow-lite1)' } : {}}>
+  return width > 768 ? (
+    <nav id="navbar">
       <motion.div className="progress-bar" style={{ width: progressBar }} />
       <motion.div variants={parent} initial="hidden" animate="visible" className="navbar-container">
-        <div ref={logoBtnRef} className="logo">
-          <Logo variants={children} style={{ width: '50px', height: 'fit-content', fill: 'var(--clr-white)' }} />
+        <div className="logo">
+          <Logo variants={children} style={{ width: '50px', height: 'fit-content', fill: 'var(--clr-light-dark)', filter: 'drop-shadow(-4px 4px 2px rgba(0,0,0,0.25))' }} />
+        </div>
+        <ul className="menu-list">
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <a href="#hero">Home</a>
+          </motion.li>
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <a href="#skills">Skills</a>
+          </motion.li>
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <a href="#projects">Projects</a>
+          </motion.li>
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <a href="#developer">Developer</a>
+          </motion.li>
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <div className="unique-menu" onClick={scrollToBottom}>
+              Let&apos;s connect!
+            </div>
+          </motion.li>
+        </ul>
+      </motion.div>
+    </nav>
+  ) : (
+    <nav id="miniNavbar">
+      <motion.div className="progress-bar" style={{ width: progressBar }} />
+      <motion.div variants={parent} initial="hidden" animate="visible" className="navbar-container">
+        <div className="logo" style={{ opacity: 0 }}>
+          <Logo variants={children} style={{ width: '50px', height: 'fit-content', fill: 'var(--clr-light-dark)', filter: 'drop-shadow(-4px 4px 2px rgba(0,0,0,0.25))' }} />
+        </div>
+        <div className="menu-btn" onClick={() => setMenuActive((prev) => !prev)}>
+          <Image className="menu-image" src="/cakram-white.svg" alt="menu" height={30} width={30} />
         </div>
         <ul className={menuActive ? 'menu-list active' : 'menu-list'}>
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#hero">Home</a>
+            <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 8s infinite linear' }} />
           </motion.li>
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#skills">Skills</a>
+            <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 8s infinite linear' }} />
           </motion.li>
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#projects">Projects</a>
+            <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 8s infinite linear' }} />
           </motion.li>
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
-            <ButtonCTA action={handleCTA}>Let&apos;s connect...</ButtonCTA>
+            <a href="#developer">Developer</a>
+            <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 8s infinite linear' }} />
           </motion.li>
-          <motion.li variants={children2} onClick={() => setMenuActive(false)} id="downloadCV2" className="menu-item">
-            <ButtonCTA action={handleDownloadCV} reverseColor={true}>
-              Download as CV
-            </ButtonCTA>
+          <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
+            <div className="unique-menu" onClick={scrollToBottom}>
+              Let&apos;s connect!
+            </div>
+            <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 8s infinite linear' }} />
           </motion.li>
         </ul>
       </motion.div>

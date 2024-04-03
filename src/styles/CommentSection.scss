@@ -1,0 +1,127 @@
+#commentSection {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 10px;
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .comment-box {
+    display: flex;
+    width: 100%;
+    padding-bottom: 20px;
+    gap: 20px;
+    border-bottom: dashed 3px var(--clr-back-dark-trans);
+    align-items: flex-end;
+
+    .comment-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 1rem;
+      background-color: var(--clr-white);
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      box-shadow: var(--box-shadow-medium);
+      resize: vertical;
+    }
+
+    .send-btn {
+      display: grid;
+      width: 50px;
+      height: 50px;
+      color: var(--clr-text-red);
+      background-color: var(--clr-white);
+      font-size: 1.5rem;
+      box-shadow: var(--box-shadow-small);
+      border-radius: 50%;
+      border: none;
+      transform: rotate(45deg);
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      place-content: center;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--clr-text-white);
+        background-color: var(--clr-yellow);
+        box-shadow: var(--box-shadow-button);
+      }
+
+      .bi {
+        margin-top: 2px;
+        margin-right: 2px;
+      }
+    }
+
+    .send-btn-mini {
+      display: flex;
+      padding: 5px 15px;
+      gap: 5px;
+      color: var(--clr-text-red);
+      background-color: var(--clr-white);
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: var(--box-shadow-small);
+      border: none;
+      border-radius: 10px;
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--clr-text-white);
+        background-color: var(--clr-yellow);
+        box-shadow: var(--box-shadow-button);
+      }
+
+      .bi {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .comments-container {
+    display: flex;
+    flex-direction: column;
+    padding-block: 10px 0px;
+    gap: 10px;
+
+    .full-comments-btn {
+      width: fit-content;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #commentSection {
+    .comment-box {
+      flex-direction: column;
+      gap: 10px;
+
+      .comment-input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #commentSection {
+    .comment-box {
+      .comment-input {
+        font-size: 0.9rem;
+      }
+
+      .send-btn-mini {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

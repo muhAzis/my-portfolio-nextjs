@@ -1,0 +1,21 @@
+.prog-card {
+  display: flex;
+  width: fit-content;
+  padding: 10px 15px;
+  gap: 10px;
+  font-size: 0.8rem;
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-small);
+  align-items: center;
+
+  .prog-icon {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .prog-card {
+    scale: 0.8;
+  }
+}

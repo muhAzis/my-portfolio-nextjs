@@ -9,6 +9,15 @@ import { Variants, motion, useScroll, useTransform } from 'framer-motion';
 import Reveal from '@/components/animations/Reveal';
 import { useViewport } from '@/hooks/useViewport';
 import { useOffset } from '@/hooks/useOffset';
+import { Sarina } from 'next/font/google';
+import ContactCard from '@/components/ContactCard';
+import NameCard from '@/components/NameCard';
+
+const sarina = Sarina({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-sarina',
+});
 
 const parent: Variants = {
   hidden: { opacity: 0 },
@@ -59,87 +68,54 @@ const Hero: React.FC = () => {
     <motion.main ref={heroRef} id="hero" variants={parent} initial="hidden" animate="visible">
       <motion.div className="marquee-container" style={{ y: heroText2Progress }}>
         <Marquee className="marquee-back" speed={100}>
-          <span>uhamad Abdul Azis M</span>
+          <span className={sarina.className} style={{ opacity: 0.5 }}>
+            uhamad Abdul Azis M
+          </span>
         </Marquee>
       </motion.div>
       <div className="hero-container">
-        <motion.div
-          variants={{
-            hidden: { maxHeight: '0px' },
-            visible: { maxHeight: '935px', transition: { duration: 1 } },
-          }}
-          className="col1"
-        >
-          <Marquee style={{ overflow: 'hidden' }}>
-            <span className="profile-pict-running-text">Muhamad Abdul Azis</span>
-          </Marquee>
-          <div
-            className="address-bar"
-            onClick={() => {
-              window.open('https://maps.app.goo.gl/s5BCWRqNA1Ru2F7p9', '_blank');
-            }}
-          >
+        <div className="row1">
+          <ContactCard link="" bIcon="bi bi-github" title="muhAzis" contact="github.com/muhAzis" mode={width <= 768 ? 'mini' : 'full'} />
+          <ContactCard link="" bIcon="bi bi-google" title="Muhamad Abdul Azis" contact="muhabdulazis555@gmail.com" mode={width <= 768 ? 'mini' : 'full'} />
+          <ContactCard link="" bIcon="bi bi-whatsapp" title="Whatsapp" contact="+62-882-2638-9456" mode={width <= 768 ? 'mini' : 'full'} />
+        </div>
+        <div className="row2">
+          <NameCard />
+        </div>
+        {width <= 992 && (
+          <a href="https://maps.app.goo.gl/s5BCWRqNA1Ru2F7p9" target="_blank" className="address-bar-mini">
             <motion.i className="bi bi-geo-alt-fill map" style={{ y: heroTextProgress, opacity: heroTransProgress }} />
             <motion.p className="address" style={{ y: heroTextProgress, opacity: heroTransProgress }}>
-              <span className="country">Indonesia</span>
+              <span className="country">
+                Indonesia <span className="flag" />
+              </span>
+            </motion.p>
+          </a>
+        )}
+        <div className="row3">
+          <p className="description">
+            a <span className="blackbold-text">Fullstack Web Developer</span> based <span className="blackbold-text">Programmer</span> and a <span className="blackbold-text">Graphic Designer</span>. Specialized in{' '}
+            <span className="highlighted-text">Code Development</span>, <span className="highlighted-text">Responsive Web Layouts</span> and <span className="highlighted-text">UI/UX Design</span>.
+          </p>
+          <div className="call-to-actions">
+            <ButtonCTA>Download my CV</ButtonCTA>
+            <ButtonCTA>Learn more about me &gt;</ButtonCTA>
+          </div>
+        </div>
+        {width > 992 && (
+          <a href="https://maps.app.goo.gl/s5BCWRqNA1Ru2F7p9" target="_blank" className="address-bar">
+            <motion.i className="bi bi-geo-alt-fill map" style={{ y: heroTextProgress, opacity: heroTransProgress }} />
+            <motion.p className="address" style={{ y: heroTextProgress, opacity: heroTransProgress }}>
+              <span className="country">
+                Indonesia <span className="flag" />
+              </span>
               <br />
               Jl. Pundong No. 1
               <br />
-              Pundong 1 03/02, Tirtoadi, Mlati, Sleman
-              <br />
-              DI Yogyakarta 55288
+              Pundong 1 03/02, Tirtoadi, Mlati, Sleman, DI Yogyakarta 55288
             </motion.p>
-          </div>
-          <Image
-            id="profile-picture"
-            src={'/profile.png'}
-            alt="profile-picture"
-            quality={80}
-            width={300}
-            height={300}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              top: 0,
-              left: 0,
-              objectFit: 'cover',
-              zIndex: 1,
-            }}
-          />
-        </motion.div>
-        <motion.div ref={rightRef} className="col2" style={{ y: heroProgress, opacity: heroTrans2Progress }}>
-          <Reveal variants={children} className="row1">
-            <div className="greet">Hi, I&apos;m</div>
-            <div className="status">
-              <span className="dot" />
-              Available now
-            </div>
-          </Reveal>
-          <Reveal variants={children} className="row2">
-            <h1 className="name">
-              Muhamad
-              <br />
-              Abdul
-              <br />
-              Azis
-            </h1>
-          </Reveal>
-          <Reveal variants={children} className="row3">
-            <p className="description">
-              a <span className="blackbold-text">Fullstack Web Developer</span> based <span className="blackbold-text">Programmer</span> and a <span className="blackbold-text">Graphic Designer</span>. Specialized in{' '}
-              <span className="highlighted-text">Code Development</span>, <span className="highlighted-text">Responsive Web Layouts</span> and <span className="highlighted-text">UI/UX Design</span>.
-            </p>
-            <div className="buttons">
-              <ButtonCTA id={'downloadCV'} action={handleCTA1}>
-                Download CV
-              </ButtonCTA>
-              <Link href="/about">
-                <ButtonCTA id={'learnMore'}>Learn more about me &gt;</ButtonCTA>
-              </Link>
-            </div>
-          </Reveal>
-        </motion.div>
+          </a>
+        )}
       </div>
     </motion.main>
   );

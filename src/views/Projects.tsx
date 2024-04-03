@@ -1,12 +1,31 @@
 import React from 'react';
 import '@/styles/Projects.scss';
+import Image from 'next/image';
+import { projects } from '@/utils/projects-data';
+import ProjectCard from '@/components/ProjectCard';
 
 const Projects: React.FC = () => {
   return (
     <main id="projects">
-      <div className="projects-heading">
-        <h2 className="title">Projects that I have worked on so far</h2>
-        <p className="sub-title">These are some of the projects that I have been worked on, I only attached the projects that I think it is profesionally approved</p>
+      <Image id="wave" src="/wave.svg" alt="wave" width={1920} height={100} />
+      <div className="projects-container">
+        <div className="projects-heading">
+          <div className="heading-content">
+            <p className="subtitle">
+              <Image className="cakram-red" src="/cakram-red.svg" alt="caramR" width={20} height={20} />
+              My current works
+            </p>
+            <h2 className="title">
+              This is a few of my <span className="bold">projects</span> that will catch <span className="bold">your interest!</span>
+            </h2>
+            <p className="desc">These are products I made that can be your consideration about what I actually can do for you</p>
+          </div>
+        </div>
+        <div className="projects-section">
+          {projects.map((project, i) => (
+            <ProjectCard key={i} data={project} />
+          ))}
+        </div>
       </div>
     </main>
   );

@@ -1,0 +1,49 @@
+.tech-stack-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  gap: 10px;
+  background-color: var(--clr-white);
+  border-radius: 20px;
+  box-shadow: var(--box-shadow-medium);
+
+  .tech-title {
+    font-weight: 700;
+  }
+
+  .bar {
+    width: 100px;
+    height: 3px;
+    border-radius: 5px;
+  }
+
+  .bar.green {
+    background-color: var(--clr-green);
+  }
+
+  .bar.red {
+    background-color: var(--clr-red);
+  }
+
+  .tech-desc {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  .techs-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .tech-stack-card {
+    .techs-container {
+      gap: 5px;
+    }
+  }
+}

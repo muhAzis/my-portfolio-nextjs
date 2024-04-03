@@ -3,6 +3,8 @@ import { Poppins } from 'next/font/google';
 import '../styles/globals.scss';
 import Navbar from '@/views/Navbar';
 import { Analytics } from '@vercel/analytics/react';
+import { getServerSession } from 'next-auth';
+import SessionProvider from '@/contexts/UserDataContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -15,11 +17,13 @@ export const metadata: Metadata = {
   description: 'Portfolio website of Muhamad Abdul Azis created using NEXT.js and Typescript stack.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <head>
@@ -28,7 +32,7 @@ export default function RootLayout({
       </head>
       <body className={poppins.className}>
         {/* <Navbar /> */}
-        {children}
+        <SessionProvider session={session}>{children}</SessionProvider>
         <Analytics />
       </body>
     </html>

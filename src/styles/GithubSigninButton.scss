@@ -1,0 +1,57 @@
+#githubAuth {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .github-button {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    padding: 10px 20px;
+    gap: 10px;
+    color: var(--clr-text-white);
+    line-height: 95%;
+    background-color: var(--clr-back-light-trans);
+    border: 1px solid var(--clr-white);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    align-items: center;
+
+    &:hover {
+      color: var(--clr-text-white);
+      background-color: var(--clr-yellow);
+      box-shadow: var(--box-shadow-button);
+      border: 1px solid var(--clr-yellow);
+    }
+
+    .bIcon {
+      font-size: 1rem;
+      line-height: 0;
+    }
+  }
+
+  .session-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+
+    .text {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      .user-pict {
+        margin-left: 5px;
+        border-radius: 50%;
+        box-shadow: var(--box-shadow-small);
+      }
+
+      .username {
+        font-weight: 700;
+        text-shadow: var(--text-shadow);
+      }
+    }
+  }
+}
