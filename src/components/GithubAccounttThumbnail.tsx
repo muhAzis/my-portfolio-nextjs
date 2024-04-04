@@ -29,9 +29,11 @@ const GithubAccounttThumbnail: React.FC<Props> = ({ username }) => {
             starsCount += star.stargazers_count;
           }
         });
+
         setName(name);
         setImage(avatar_url);
-        setSite(blog);
+        // setSite(blog);
+        setSite(`https://github.com/${username}`);
         setBio(bio);
         setRepos(public_repos);
         setStars(starsCount > 9999 ? '9999+' : starsCount);

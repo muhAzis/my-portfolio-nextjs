@@ -3,8 +3,8 @@ import { Poppins } from 'next/font/google';
 import '../styles/globals.scss';
 import Navbar from '@/views/Navbar';
 import { Analytics } from '@vercel/analytics/react';
-import { getServerSession } from 'next-auth';
-import SessionProvider from '@/contexts/UserDataContext';
+import { getServerSession, Session } from 'next-auth';
+import UserDataProvider from '@/contexts/UserDataContext';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -32,7 +32,7 @@ export default async function RootLayout({
       </head>
       <body className={poppins.className}>
         {/* <Navbar /> */}
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <UserDataProvider session={session as Session}>{children}</UserDataProvider>
         <Analytics />
       </body>
     </html>

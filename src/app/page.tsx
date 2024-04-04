@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import TopButton from '@/components/TopButton';
 import VerticalOffsetContextProvider from '@/contexts/VerticalOffsetContext';
 import ViewportContextProvider from '@/contexts/ViewportContext';
@@ -13,26 +14,24 @@ import WelcomeScreen from '@/views/WelcomeScreen';
 import UserDataContextProvider from '@/contexts/UserDataContext';
 import CommentsDataContextProvider from '@/contexts/CommentsDataContext';
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
-    <UserDataContextProvider>
-      <CommentsDataContextProvider>
-        <ViewportContextProvider>
-          <VerticalOffsetContextProvider>
-            <div id="app">
-              <WelcomeScreen />
-              <Navbar />
-              {/* <TopButton /> */}
-              <Hero />
-              <Skills />
-              <Projects />
-              <Developer />
-              <Footer />
-            </div>
-          </VerticalOffsetContextProvider>
-        </ViewportContextProvider>
-      </CommentsDataContextProvider>
-    </UserDataContextProvider>
+    <CommentsDataContextProvider>
+      <ViewportContextProvider>
+        <VerticalOffsetContextProvider>
+          <div id="app">
+            <WelcomeScreen />
+            <Navbar />
+            {/* <TopButton /> */}
+            <Hero />
+            <Skills />
+            <Projects />
+            <Developer />
+            <Footer />
+          </div>
+        </VerticalOffsetContextProvider>
+      </ViewportContextProvider>
+    </CommentsDataContextProvider>
   );
 };
 

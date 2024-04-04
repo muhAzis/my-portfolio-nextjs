@@ -29,7 +29,7 @@ const children2: Variants = {
 
 const margin = '-300px 0px -200px 0px';
 
-const Skills: React.FC = () => {
+const Skills: React.FC = async () => {
   const techs: Techs[] = ['HTML', 'CSS', 'SASS', 'Bootstrap', 'Javascript', 'Typescript', 'Node JS', 'Express JS', 'React JS', 'Next JS', 'MongoDB', 'Firebase', 'C', 'CPP', 'GIT', 'GitHub', 'VS Code', 'Figma'];
   const favTechs: Techs[] = ['Typescript', 'React JS', 'Next JS', 'MongoDB', 'Firebase'];
   const targetTechs: Techs[] = ['Golang', 'Supabase', 'Docker', 'Flutter', 'Dart'];
