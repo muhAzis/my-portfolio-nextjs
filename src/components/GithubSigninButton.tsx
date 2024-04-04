@@ -20,11 +20,7 @@ const GithubSigninButton = () => {
   }, [session]);
 
   const handleSignIn = async () => {
-    setLoading(true);
-    const res = await signIn('github', {
-      redirect: false,
-    });
-    setLoading(false);
+    await signIn('github');
   };
 
   const handleSignOut = () => {

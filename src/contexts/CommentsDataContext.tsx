@@ -38,7 +38,6 @@ const CommentsDataContextProvider: React.FC<Props> = ({ children }) => {
         });
 
         const sorted = [...data].sort((a, b) => dayjs(b.iat).unix() - dayjs(a.iat).unix());
-        console.log(sorted);
 
         setComments(sorted);
       });

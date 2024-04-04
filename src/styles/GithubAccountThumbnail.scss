@@ -1,15 +1,3 @@
-@keyframes loading {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
 .account-thumbnail {
   position: absolute;
   display: flex;
@@ -90,4 +78,26 @@
 .loading-state {
   border-radius: 5px;
   animation: loading 2s infinite ease-in-out;
+}
+
+@media screen and (max-width: 576px) {
+  .account-thumbnail {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .account-thumbnail {
+    .profile-image {
+      align-self: center;
+    }
+
+    .account-info-tab {
+      .info-header {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
 }
