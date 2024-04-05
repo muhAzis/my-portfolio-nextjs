@@ -98,7 +98,7 @@ const Hero: React.FC = () => {
             <span className="highlighted-text">Code Development</span>, <span className="highlighted-text">Responsive Web Layouts</span> and <span className="highlighted-text">UI/UX Design</span>.
           </p>
           <div className="call-to-actions">
-            <ButtonCTA>Download my CV</ButtonCTA>
+            <ButtonCTA download="/Muh Abdul Azis CV.pdf">Download my CV</ButtonCTA>
             <ButtonCTA href="/about" navigate={true}>
               Learn more about me &gt;
             </ButtonCTA>

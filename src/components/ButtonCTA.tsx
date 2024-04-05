@@ -13,9 +13,10 @@ interface Props {
   color?: 'dark' | 'light';
   style?: React.CSSProperties;
   navigate?: boolean;
+  download?: string;
 }
 
-const ButtonCTA: React.FC<Props> = ({ children, bIcon, bIconPos = 'left', action, href, className, style, id, color = 'dark', navigate = false }) => {
+const ButtonCTA: React.FC<Props> = ({ children, bIcon, bIconPos = 'left', action, href, className, style, id, color = 'dark', navigate = false, download }) => {
   return href ? (
     !navigate ? (
       <a id={id} href={href} target="_blank" className={className + ' call-to-action ' + color} onClick={action} style={style}>
@@ -30,12 +31,18 @@ const ButtonCTA: React.FC<Props> = ({ children, bIcon, bIconPos = 'left', action
         {bIcon && bIconPos === 'right' && <i className={bIcon + ' bIcon'} />}
       </Link>
     )
-  ) : (
+  ) : !download ? (
     <button id={id} className={className + ' call-to-action ' + color} onClick={action} style={style}>
       {bIcon && bIconPos === 'left' && <i className={bIcon + ' bIcon'} />}
       {children}
       {bIcon && bIconPos === 'right' && <i className={bIcon + ' bIcon'} />}
     </button>
+  ) : (
+    <a href={download} id={id} className={className + ' call-to-action ' + color} onClick={action} style={style} download>
+      {bIcon && bIconPos === 'left' && <i className={bIcon + ' bIcon'} />}
+      {children}
+      {bIcon && bIconPos === 'right' && <i className={bIcon + ' bIcon'} />}
+    </a>
   );
 };
 
