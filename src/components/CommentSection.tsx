@@ -7,6 +7,7 @@ import { useComments } from '@/hooks/useComments';
 import Image from 'next/image';
 import { useViewport } from '@/hooks/useViewport';
 import ImportantCard from './ImportantCard';
+import Link from 'next/link';
 
 const CommentSection: React.FC = ({}) => {
   const { data: session } = useSession();
@@ -52,7 +53,9 @@ const CommentSection: React.FC = ({}) => {
       )}
       <div className="comments-container">
         {renderComments()}
-        <span className="full-comments-btn">See other {comments.length - 7} comments</span>
+        <Link href={'/comments'} className="full-comments-btn">
+          See other {comments.length - 7} comments
+        </Link>
       </div>
     </div>
   );

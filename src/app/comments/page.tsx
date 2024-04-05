@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
+import '@/styles/CommentsPage.scss';
 import UnderDevelopment from '@/views/UnderDevelopment';
 
-const About = () => {
+const Comments = () => {
   return <UnderDevelopment />;
 };
 
-export default About;
+export default Comments;

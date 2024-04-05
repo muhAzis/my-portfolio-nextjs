@@ -99,7 +99,9 @@ const Hero: React.FC = () => {
           </p>
           <div className="call-to-actions">
             <ButtonCTA>Download my CV</ButtonCTA>
-            <ButtonCTA>Learn more about me &gt;</ButtonCTA>
+            <ButtonCTA href="/about" navigate={true}>
+              Learn more about me &gt;
+            </ButtonCTA>
           </div>
         </div>
         {width > 992 && (
