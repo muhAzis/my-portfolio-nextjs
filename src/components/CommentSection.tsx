@@ -6,6 +6,7 @@ import CommentCard from './CommentCard';
 import { useComments } from '@/hooks/useComments';
 import Image from 'next/image';
 import { useViewport } from '@/hooks/useViewport';
+import ImportantCard from './ImportantCard';
 
 const CommentSection: React.FC = ({}) => {
   const { data: session } = useSession();
@@ -32,6 +33,7 @@ const CommentSection: React.FC = ({}) => {
   return (
     <div id="commentSection">
       <h3 className="title">Have some thought for me? Leave a comment!</h3>
+      <ImportantCard />
       <GithubSigninButton />
       {session && (
         <form onSubmit={(e) => handleSendComment(e)} className="comment-box">

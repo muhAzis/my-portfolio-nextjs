@@ -34,11 +34,13 @@ const Developer: React.FC = ({}) => {
             Are you a developer and interested with this portfolio website? I will provide the repository of this website for you to check out, and you may use the source code as you wish. But consider to leave a star in the repo!
           </p>
           <a href="https://github.com/muhAzis/my-portfolio-nextjs" target="_blank" className="github-link">
-            <i className="bi bi-github" /> https://github.com/muhAzis/my-portfolio-nextjs
+            <i className="bi bi-github" />
+            <span className="link-text">https://github.com/muhAzis/my-portfolio-nextjs</span>
           </a>
           <p className="desc">And if you want to check my other works, you can go here :</p>
           <a href="https://github.com/muhAzis" target="_blank" className="github-link">
-            <i className="bi bi-github" /> https://github.com/muhAzis
+            <i className="bi bi-github" />
+            <span className="link-text">https://github.com/muhAzis</span>
           </a>
           <p className="desc">
             This website is built using <span className="bold">React</span> and <span className="bold">Next</span> as the framework for fullstack, and I’m using <span className="bold">Typescript</span> for the language instead of Javascript

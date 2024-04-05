@@ -1,10 +1,6 @@
 :root {
   --clr-green-special: #6daf19;
   --clr-red-special: #b80c09;
-  --clr-purple: #9022e5;
-  --clr-pink: #db8bdd;
-  --clr-raisin-black: #232023;
-  --clr-rainforest-glow: #c8d746;
   --clr-dark-grey: #2a2a2a;
   --clr-semi-grey: #4d4d4d;
   --clr-light-grey: #e2e2e2;
@@ -18,12 +14,6 @@
   --clr-dark-tropical-teal: #097675;
   --clr-sentimental-red: #dd1c3e;
   --clr-dark-sentimental-red: #830319;
-  --clr-ambitious-rose: #e9687e;
-  --clr-tropical-peach: #fdc2b1;
-  --clr-lemon-meringue: #f7e298;
-  --clr-serenity-sky: #c4dee3;
-  --clr-crystal-lake: #86b9c7;
-  --clr-blue-paisley: #0082a6;
 
   --clr-dark: var(--clr-dark-grey);
   --clr-light-dark: var(--clr-semi-grey);
@@ -52,13 +42,10 @@
   --clr-back-dark-trans: rgba(77, 77, 77, 0.1);
   --clr-back-light-trans: rgba(253, 250, 243, 0.1);
   --clr-back-light-trans2: rgba(253, 250, 243, 0.2);
+  --clr-back-dark-red-trans: rgba(131, 3, 25, 0.3);
 
   --background-radial-grad: radial-gradient(circle at 50% 0%, var(--clr-white) 0%, var(--clr-lighter) 50%);
   --clr-progress-bar: linear-gradient(120deg, var(--clr-tropical-teal) 0%, var(--clr-light-tropical-teal) 100%);
-  --clr-cta-gradient: linear-gradient(120deg, var(--clr-ambitious-rose) 0%, var(--clr-tropical-peach) 100%);
-  --clr-card-gradient: linear-gradient(120deg, #c8d746 0%, rgba(247, 226, 152, 0.1) 100%);
-  --clr-trans-gradient: linear-gradient(120deg, #c8d746 0%, rgba(247, 226, 152, 0.9) 100%);
-  --clr-glass-gradient: linear-gradient(120deg, rgba(144, 34, 229, 0.12) 0%, rgba(43, 43, 43, 0.03) 100%);
 
   --box-shadow-small: -4px 4px 5px 1px rgba(0, 0, 0, 0.1);
   --box-shadow-medium: -8px 8px 10px 0px rgba(0, 0, 0, 0.1);
