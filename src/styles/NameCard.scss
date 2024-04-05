@@ -79,8 +79,18 @@
     .profile-info {
       align-items: center;
 
+      .greet {
+        font-size: 2rem;
+      }
+
       .name {
+        font-size: 1.5rem;
         text-align: center;
+      }
+
+      .proffesion {
+        margin-top: 10px;
+        font-size: 0.9rem;
       }
     }
   }

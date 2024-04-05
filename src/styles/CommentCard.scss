@@ -59,6 +59,30 @@
   }
 }
 
+@media screen and (max-width: 576px) {
+  .comment-card {
+    .comment-header {
+      .comment-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .user-name {
+          font-size: 0.8rem;
+        }
+
+        .timestamp {
+          font-size: 0.6rem;
+        }
+      }
+    }
+
+    .comment-message {
+      font-size: 0.8rem;
+    }
+  }
+}
+
 @media screen and (max-width: 375px) {
   .comment-card {
     .comment-header {
@@ -66,10 +90,6 @@
         width: 40px;
         height: 40px;
       }
-    }
-
-    .comment-message {
-      font-size: 0.9rem;
     }
   }
 }

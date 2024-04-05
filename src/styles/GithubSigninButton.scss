@@ -55,3 +55,27 @@
     }
   }
 }
+
+@media screen and (max-width: 576px) {
+  #githubAuth {
+    .github-button {
+      padding: 10px 15px;
+      font-size: 0.8rem;
+
+      .bIcon {
+        font-size: 0.8rem;
+      }
+    }
+
+    .session-info {
+      font-size: 0.8rem;
+
+      .text {
+        .user-pict {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}

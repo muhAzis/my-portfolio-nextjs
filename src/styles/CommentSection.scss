@@ -107,6 +107,13 @@
 
       .comment-input {
         width: 100%;
+        font-size: 0.8rem;
+      }
+    }
+
+    .comments-container {
+      .full-comments-btn {
+        font-size: 0.8rem;
       }
     }
   }
@@ -115,10 +122,6 @@
 @media screen and (max-width: 375px) {
   #commentSection {
     .comment-box {
-      .comment-input {
-        font-size: 0.9rem;
-      }
-
       .send-btn-mini {
         font-size: 0.8rem;
       }

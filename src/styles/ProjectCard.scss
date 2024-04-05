@@ -24,6 +24,7 @@
     color: var(--clr-text-green);
     font-size: 1.5rem;
     font-weight: 700;
+    line-height: 120%;
   }
 
   .project-desc {
@@ -85,8 +86,11 @@
 .field-tags.outside {
   position: static;
   flex-wrap: wrap;
+  margin-top: -10px;
+  gap: 5px;
 
   .tag {
+    font-size: 0.6rem;
     background-color: var(--clr-light-dark);
     box-shadow: var(--box-shadow-small);
     opacity: 0.5;
@@ -95,6 +99,11 @@
 
 @media screen and (max-width: 576px) {
   .project-card {
+    .project-desc {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+
     .call-to-actions {
       flex-direction: column-reverse;
       flex-wrap: nowrap;
@@ -111,11 +120,6 @@
 
     .project-title {
       font-size: 1.2rem;
-    }
-
-    .project-desc {
-      font-size: 0.9rem;
-      opacity: 0.5;
     }
 
     .call-to-actions {

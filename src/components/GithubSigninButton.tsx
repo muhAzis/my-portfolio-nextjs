@@ -43,13 +43,13 @@ const GithubSigninButton = () => {
             <Image className="user-pict" src={image ? image : ''} alt={name} width={30} height={30} />
             <span className="username">{name}</span>
           </div>
-          {loading && (
-            <div className="session-info">
-              Please wait...
-              <Image className="user-pict" src="/cakram-white.svg" alt="loading" width={30} height={30} style={{ animation: 'spin 1s infinite ease-in-out' }} />
-            </div>
-          )}
         </div>
+        {loading && (
+          <div className="session-info">
+            Please wait...
+            <Image className="user-pict" src="/cakram-white.svg" alt="loading" width={30} height={30} style={{ animation: 'spin 1s infinite ease-in-out' }} />
+          </div>
+        )}
       </div>
     );
   } else {
