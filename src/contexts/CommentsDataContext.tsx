@@ -1,7 +1,7 @@
 import { Comment } from '@/types/comment';
 import { db } from '@/utils/firebaseConfig';
 import dayjs from 'dayjs';
-import { addDoc, collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
 import React, { createContext, useEffect, useState } from 'react';
@@ -14,6 +14,7 @@ type CommentsDataContextType = {
   loading: boolean;
   comments: Comment[];
   postComment: ({ comment }: { comment: string }) => Promise<void | Error>;
+  updateComment: ({ id, comment }: { id: string; comment: string }) => Promise<void | Error>;
   deleteComment: ({ id }: { id: string }) => Promise<void | Error>;
 };
 
@@ -21,6 +22,7 @@ export const CommentsDataContext = createContext<CommentsDataContextType>({
   loading: false,
   comments: [],
   postComment: async ({ comment }: { comment: string }) => {},
+  updateComment: async ({ id, comment }: { id: string; comment: string }) => {},
   deleteComment: async ({ id }: { id: string }) => {},
 });
 
@@ -69,6 +71,26 @@ const CommentsDataContextProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const updateComment = async ({ id, comment }: { id: string; comment: string }) => {
+    try {
+      if (!session) {
+        return new Error('Unauthorized');
+      }
+
+      const commentRef = doc(db, 'comments', id);
+
+      setLoading(true);
+      await updateDoc(commentRef, {
+        comment: comment,
+        uat: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+      });
+
+      setLoading(false);
+    } catch (error) {
+      return new Error('Something went wrong!');
+    }
+  };
+
   const deleteComment = async ({ id }: { id: string }) => {
     try {
       if (!session) {
@@ -94,6 +116,7 @@ const CommentsDataContextProvider: React.FC<Props> = ({ children }) => {
     loading,
     comments,
     postComment,
+    updateComment,
     deleteComment,
   };
 

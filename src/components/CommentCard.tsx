@@ -10,7 +10,14 @@ import GithubAccounttThumbnail from './GithubAccounttThumbnail';
 
 dayjs.extend(relativeTime);
 
-const CommentCard: React.FC<Comment> = ({ id, name, email, comment, image, iat }) => {
+interface Props extends Comment {
+  edit: {
+    id: (id: string) => void;
+    comment: (comment: string) => void;
+  };
+}
+
+const CommentCard = ({ id, name, email, comment, image, uat, iat, edit }: Props) => {
   const { data: session } = useSession();
   const { loading, deleteComment } = useComments();
   const [time, setTime] = useState<string>('');
@@ -37,9 +44,20 @@ const CommentCard: React.FC<Comment> = ({ id, name, email, comment, image, iat }
           <a href={'https://github.com/' + name} target="_blank" className="user-name" onMouseOver={() => setShowThumbnail(true)} onMouseLeave={() => setShowThumbnail(false)}>
             {name}
           </a>
-          <span className="timestamp">{time}</span>
+          <span className="timestamp">{`${time}${uat ? ', edited' : ''}`}</span>
         </div>
-        {session && session.user?.email === email && <div className="bi bi-trash3-fill delete-btn" onClick={handleDeleteComment} />}
+        {session && session.user?.email === email && (
+          <div className="comment-cta">
+            <div
+              className="bi bi-pencil-fill edit-btn"
+              onClick={() => {
+                edit.id(id);
+                edit.comment(comment);
+              }}
+            />
+            <div className="bi bi-trash3-fill delete-btn" onClick={handleDeleteComment} />
+          </div>
+        )}
       </div>
       <p className="comment-message">{comment}</p>
     </div>

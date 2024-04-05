@@ -11,9 +11,7 @@
   .comment-box {
     display: flex;
     width: 100%;
-    padding-bottom: 20px;
     gap: 20px;
-    border-bottom: dashed 3px var(--clr-back-dark-trans);
     align-items: flex-end;
 
     .comment-input {
@@ -81,11 +79,49 @@
     }
   }
 
+  .edit-comment {
+    display: flex;
+    width: fit-content;
+    padding: 7px;
+    gap: 5px;
+    background-color: var(--clr-back-light-trans);
+    border-radius: 50px;
+    border: 1px solid var(--clr-white);
+    transition: all 0.2s ease-in-out;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--clr-text-white);
+      background-color: var(--clr-yellow);
+      box-shadow: var(--box-shadow-button);
+      border: 1px solid var(--clr-yellow);
+    }
+
+    .comment-id {
+      max-width: 130px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      .bold {
+        font-weight: 700;
+      }
+    }
+
+    .bi {
+      font-size: 1.2rem;
+      line-height: 0;
+    }
+  }
+
   .comments-container {
     display: flex;
     flex-direction: column;
-    padding-block: 10px 0px;
+    margin-top: 10px;
+    padding-block: 20px 0px;
     gap: 10px;
+    border-top: dashed 3px var(--clr-back-dark-trans);
 
     .full-comments-btn {
       width: fit-content;

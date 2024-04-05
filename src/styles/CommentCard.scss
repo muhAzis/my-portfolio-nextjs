@@ -39,15 +39,21 @@
       }
     }
 
-    .delete-btn {
-      color: var(--clr-text-red);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.2s ease-in-out;
+    .comment-cta {
+      display: flex;
+      gap: 20px;
       align-self: flex-start;
 
-      &:hover {
-        color: var(--clr-text-dark-red);
+      .delete-btn,
+      .edit-btn {
+        color: var(--clr-text-red);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+          color: var(--clr-text-dark-red);
+        }
       }
     }
   }
