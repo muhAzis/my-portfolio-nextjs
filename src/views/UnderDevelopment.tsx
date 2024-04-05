@@ -8,9 +8,9 @@ const UnderDevelopment = () => {
     <div id="underDevelopment">
       <div className="content-container">
         <div className="spinner">
-          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 15s linear infinite' }} />
-          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 10s 1s linear infinite' }} />
-          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 20s 2s linear infinite' }} />
+          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 4s ease-in-out infinite' }} />
+          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 5s ease-in-out infinite' }} />
+          <Image className="spinner-blade" src="/cakram-white.svg" alt="spinner" width={50} height={50} style={{ animation: 'spin 3s ease-in-out infinite' }} />
         </div>
         <h2 className="title">Under Development</h2>
         <h3 className="subtitle">{'Will be available soon'}</h3>
