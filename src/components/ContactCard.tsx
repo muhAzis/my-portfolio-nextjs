@@ -1,5 +1,7 @@
 import React from 'react';
 import '@/styles/ContactCard.scss';
+import { motion, Variants } from 'framer-motion';
+import { useViewport } from '@/hooks/useViewport';
 
 interface Props {
   link: string;
@@ -7,20 +9,26 @@ interface Props {
   title: string;
   contact: string;
   size?: 'big' | 'small';
-  mode?: 'mini' | 'full';
 }
 
-const ContactCard: React.FC<Props> = ({ link, bIcon, title, contact, size = 'big', mode = 'full' }) => {
+const children: Variants = {
+  hidden: { opacity: 0, y: '-50%' },
+  visible: { opacity: 1, y: '0%', transition: { duration: 0.5 } },
+};
+
+const ContactCard: React.FC<Props> = ({ link, bIcon, title, contact, size = 'big' }) => {
+  const [width, height] = useViewport();
+
   return (
-    <a href={link} target="_blank" className={size === 'big' ? 'contact-card-big' : 'contact-card-small'}>
+    <motion.a variants={children} href={link} target="_blank" className={size === 'big' ? 'contact-card-big' : 'contact-card-small'}>
       <i className={bIcon + ' contact-icon'} />
-      {mode === 'full' && (
+      {width > 768 && (
         <div className="info">
           <span className="title">{title}</span>
           <span className="contact">{contact}</span>
         </div>
       )}
-    </a>
+    </motion.a>
   );
 };
 

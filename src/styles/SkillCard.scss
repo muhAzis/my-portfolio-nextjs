@@ -8,15 +8,20 @@
   background-color: var(--clr-white);
   border-radius: 20px;
   box-shadow: var(--box-shadow-medium);
+  transition: color 1s ease, scale 1s ease, background-color 1s ease, box-shadow 1s ease;
 
   .icon {
+    position: relative;
     display: grid;
     width: 60px;
     height: 60px;
+    left: 0%;
     background-color: var(--clr-green);
     border-radius: 50%;
     box-shadow: 0 0 10px 0 var(--clr-green);
+    transform: translateX(0%);
     place-content: center;
+    transition: left 1s ease, transform 1s ease;
   }
 
   .skill-name {
@@ -27,6 +32,18 @@
   .skill-desc {
     font-size: 0.8rem;
     opacity: 0.5;
+  }
+
+  &:hover {
+    color: var(--clr-text-white);
+    background-color: var(--clr-green);
+    box-shadow: var(--box-shadow-big), 0 0 20px 4px var(--clr-green);
+    scale: 1.1;
+
+    .icon {
+      left: 100%;
+      transform: translateX(-100%);
+    }
   }
 }
 

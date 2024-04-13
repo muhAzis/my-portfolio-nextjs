@@ -1,64 +1,26 @@
 import ContactCard from '@/components/ContactCard';
-import Logo from '@/components/Logo';
-import Reveal from '@/components/animations/Reveal';
-import { useOffset } from '@/hooks/useOffset';
-import { useViewport } from '@/hooks/useViewport';
 import '@/styles/Footer.scss';
 import { Variants, motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Marquee from 'react-fast-marquee';
 
-const parent: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const children: Variants = {
-  hidden: { opacity: 0, x: '-50%' },
-  visible: { opacity: 1, x: '0%', transition: { duration: 0.3, staggerChildren: 0.03 } },
-};
-
-const children2: Variants = {
-  hidden: { opacity: 0, y: '50%' },
-  visible: { opacity: 1, y: '0%', transition: { duration: 0.2 } },
-};
-
-const logo: Variants = {
-  hidden: { opacity: 0, y: '100%' },
-  visible: { opacity: 1, y: '0%', transition: { duration: 1 } },
-};
-
-const margin = '300px 0px -300px 0px';
-
 const Footer: React.FC = () => {
-  const contactsRef = useRef<HTMLDivElement>(null);
-  const [width, height] = useViewport();
-  const yOffset = useOffset();
-
-  const [contactHeight, setContactHeight] = useState<number>(0);
-  const [isOffset, setIsOffset] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (contactsRef.current) {
-      setContactHeight(contactsRef.current.clientHeight);
-    }
-  }, [setContactHeight]);
-
-  useEffect(() => {
-    setIsOffset(!(yOffset < 992));
-  }, [yOffset]);
-
   return (
     <main id="contact">
       <div className="contact-container">
         <div className="row1">
-          <ContactCard link="" bIcon="bi bi-whatsapp" title="Whatsapp" contact="+62-882-2638-9456" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+          <ContactCard link="https://wa.me/6288226389456" bIcon="bi bi-whatsapp" title="Whatsapp" contact="+62-882-2638-9456" size="small" />
           <Image src="/cakram-yellow.svg" alt="cakram yellow" className="cakram-yellow" width={30} height={30} />
-          <ContactCard link="" bIcon="bi bi-google" title="Muhamad Abdul Azis" contact="muhabdulazis555@gmail.com" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+          <ContactCard
+            link="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRlQhdMWjRfXSmMnvSrGGzZGNvZtxXqhJbqXzdQGgzGkfvcnvdFKbmJMGggblNbnQsZHpKG"
+            bIcon="bi bi-google"
+            title="Muhamad Abdul Azis"
+            contact="muhabdulazis555@gmail.com"
+            size="small"
+          />
           <Image src="/cakram-yellow.svg" alt="cakram yellow" className="cakram-yellow" width={30} height={30} />
-          <ContactCard link="" bIcon="bi bi-github" title="muhAzis" contact="github.com/muhAzis" size="small" mode={width <= 992 ? 'mini' : 'full'} />
+          <ContactCard link="https://github.com/muhAzis" bIcon="bi bi-github" title="muhAzis" contact="github.com/muhAzis" size="small" />
         </div>
         <div className="row2">
           <div className="logo-full">

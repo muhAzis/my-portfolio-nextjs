@@ -51,19 +51,19 @@ const Navbar: React.FC = () => {
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#hero">Home</a>
           </motion.li>
-          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 5s infinite linear' }} />
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#skills">Skills</a>
           </motion.li>
-          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 5s infinite linear' }} />
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#projects">Projects</a>
           </motion.li>
-          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 5s infinite linear' }} />
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <a href="#developer">Developer</a>
           </motion.li>
-          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} />
+          <Image src="/cakram-black.svg" alt="cakram-b" height={25} width={25} style={{ animation: 'spin 5s infinite linear' }} />
           <motion.li variants={children2} onClick={() => setMenuActive(false)} className="menu-item">
             <div className="unique-menu" onClick={scrollToBottom}>
               Let&apos;s connect!

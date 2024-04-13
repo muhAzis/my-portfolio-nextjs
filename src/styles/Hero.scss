@@ -78,7 +78,6 @@
       left: 3rem;
       gap: 15px;
       color: var(--clr-text-special);
-      transition: all 0.2s ease-in-out;
       align-items: center;
       justify-content: center;
       z-index: 2;
@@ -87,6 +86,8 @@
       .map {
         color: var(--clr-text-green);
         font-size: 1.9rem;
+        opacity: 0.7;
+        transition: opacity 0.2s ease-in-out;
       }
 
       .address {
@@ -94,6 +95,8 @@
         flex-direction: column;
         max-width: 200px;
         font-size: 0.8rem;
+        opacity: 0.7;
+        transition: opacity 0.2s ease-in-out;
 
         .country {
           display: flex;
@@ -128,12 +131,15 @@
       }
 
       &:hover {
-        opacity: 1;
+        .map,
+        .address {
+          opacity: 1;
+        }
       }
     }
 
     .address-bar-mini {
-      display: flex;
+      display: none;
       margin-block: 0px 10px;
       gap: 5px;
       align-items: center;
@@ -212,6 +218,14 @@
 
       .row2 {
         padding-block: 80px;
+      }
+
+      .address-bar {
+        display: none;
+      }
+
+      .address-bar-mini {
+        display: flex;
       }
     }
   }

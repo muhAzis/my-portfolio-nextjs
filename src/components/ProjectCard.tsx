@@ -5,17 +5,24 @@ import '@/styles/ProjectCard.scss';
 import ButtonCTA from './ButtonCTA';
 import { techs } from '@/utils/techs-data';
 import { useViewport } from '@/hooks/useViewport';
+import Div from './animations/Div';
+import { Variants } from 'framer-motion';
 
 interface Props {
   data: Project;
 }
 
-const ProjectCard: React.FC<Props> = ({ data }) => {
+const anim: Variants = {
+  hidden: { opacity: 0, x: '10%' },
+  visible: { opacity: 1, x: '0%', transition: { duration: 0.5 } },
+};
+
+const ProjectCard = ({ data }: Props) => {
   const [width, height] = useViewport();
   const { image, title, description, tags, techStack, github, demo } = data;
 
   return (
-    <div className="project-card">
+    <Div variants={anim} once={false} className="project-card">
       <div className="project-image">
         <Image className="project-thumbnail" src={image} alt="Project Picture" width={600} height={350} />
         {width > 576 && (
@@ -55,7 +62,7 @@ const ProjectCard: React.FC<Props> = ({ data }) => {
           Demo website &gt;
         </ButtonCTA>
       </div>
-    </div>
+    </Div>
   );
 };
 

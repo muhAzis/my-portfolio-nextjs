@@ -1,4 +1,5 @@
 .tech-stack-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,23 +9,45 @@
   background-color: var(--clr-white);
   border-radius: 20px;
   box-shadow: var(--box-shadow-medium);
+  transition: scale 1s ease;
 
   .tech-title {
+    position: relative;
+    width: fit-content;
+    left: 0;
+    right: auto;
     font-weight: 700;
+    transform: translateX(0%);
+    transition: left 1s ease, transform 1s ease;
   }
 
-  .bar {
-    width: 100px;
-    height: 3px;
-    border-radius: 5px;
-  }
+  .bars {
+    display: flex;
+    justify-content: space-between;
 
-  .bar.green {
-    background-color: var(--clr-green);
-  }
+    .bar1 {
+      width: 100px;
+      height: 3px;
+      border-radius: 5px;
+      align-self: flex-start;
+      transition: width 1s ease;
+    }
 
-  .bar.red {
-    background-color: var(--clr-red);
+    .bar2 {
+      width: 0px;
+      height: 3px;
+      border-radius: 5px;
+      align-self: flex-start;
+      transition: width 1s ease;
+    }
+
+    .green {
+      background-color: var(--clr-green);
+    }
+
+    .red {
+      background-color: var(--clr-red);
+    }
   }
 
   .tech-desc {
@@ -37,6 +60,25 @@
     flex-wrap: wrap;
     padding-top: 10px;
     gap: 10px;
+  }
+
+  &:hover {
+    scale: 1.1;
+
+    .tech-title {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+
+    .bars {
+      .bar1 {
+        width: 0px;
+      }
+
+      .bar2 {
+        width: 100px;
+      }
+    }
   }
 }
 

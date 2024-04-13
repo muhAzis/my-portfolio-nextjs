@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { projects } from '@/utils/projects-data';
 import ProjectCard from '@/components/ProjectCard';
 
-const Projects: React.FC = () => {
+const Projects = () => {
   return (
     <main id="projects">
       <Image id="wave" src="/wave.svg" alt="wave" width={1920} height={100} />

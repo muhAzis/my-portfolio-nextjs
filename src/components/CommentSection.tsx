@@ -8,6 +8,18 @@ import Image from 'next/image';
 import { useViewport } from '@/hooks/useViewport';
 import ImportantCard from './ImportantCard';
 import Link from 'next/link';
+import Div from './animations/Div';
+import { AnimatePresence, Variants } from 'framer-motion';
+
+const parent: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const CommentSection: React.FC = ({}) => {
   const { data: session } = useSession();
@@ -34,10 +46,10 @@ const CommentSection: React.FC = ({}) => {
 
   const renderComments = () => {
     if (comments.length > 7) {
-      return comments.slice(0, 7).map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={i} />);
+      return comments.slice(0, 7).map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={comment.id} />);
     }
 
-    return comments.map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={i} />);
+    return comments.map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={comment.id} />);
   };
 
   return (
@@ -78,7 +90,7 @@ const CommentSection: React.FC = ({}) => {
         </>
       )}
       <div className="comments-container">
-        {renderComments()}
+        <AnimatePresence>{renderComments()}</AnimatePresence>
         {comments.length - 7 > 0 ? (
           <Link href={'/comments'} className="full-comments-btn">
             See other {comments.length - 7} comments
