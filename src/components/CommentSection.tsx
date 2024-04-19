@@ -34,23 +34,23 @@ const CommentSection = () => {
   const [comment, setComment] = useState<string>('');
   const [commentId, setCommentId] = useState<string>('');
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const commentsRef = collection(db, 'comments');
-  //       const q = query(commentsRef, orderBy('iat', 'desc'), limit(7));
-  //       onSnapshot(q, (snapshot) => {
-  //         const data = snapshot.docs.map((doc) => {
-  //           return { ...doc.data(), id: doc.id } as Comment;
-  //         });
+  useEffect(() => {
+    (async () => {
+      try {
+        const commentsRef = collection(db, 'comments');
+        const q = query(commentsRef, orderBy('iat', 'desc'), limit(7));
+        onSnapshot(q, (snapshot) => {
+          const data = snapshot.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id } as Comment;
+          });
 
-  //         setComments(data);
-  //       });
-  //     } catch (error) {
-  //       return new Error('Something went wrong!');
-  //     }
-  //   })();
-  // }, []);
+          setComments(data);
+        });
+      } catch (error) {
+        return new Error('Something went wrong!');
+      }
+    })();
+  }, []);
 
   const handleSendComment = (e: React.FormEvent) => {
     e.preventDefault();
