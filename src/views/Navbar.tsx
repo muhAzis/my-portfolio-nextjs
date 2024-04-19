@@ -1,10 +1,8 @@
 'use client';
 import '@/styles/Navbar.scss';
-import ButtonCTA from '@/components/ButtonCTA';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Logo from '@/components/Logo';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useOffset } from '@/hooks/useOffset';
 import Image from 'next/image';
 import { useViewport } from '@/hooks/useViewport';
 

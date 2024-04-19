@@ -1,3 +1,4 @@
+'use client';
 import { Techs } from '@/utils/techs-data';
 import React from 'react';
 import ProgCard from './ProgCard';

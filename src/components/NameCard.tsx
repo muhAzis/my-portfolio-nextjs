@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import '@/styles/NameCard.scss';
 import Image from 'next/image';
@@ -21,7 +22,7 @@ const NameCard: React.FC = () => {
       <div className="profile-info">
         <span className="greet">Hi, I&apos;m</span>
         <h1 className="name">Muhamad Abdul Azis</h1>
-        <span className="proffesion">Fullstack Web Developer</span>
+        <span className="proffesion">Junior Fullstack Web Developer</span>
       </div>
     </motion.div>
   );

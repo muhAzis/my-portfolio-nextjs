@@ -1,24 +1,23 @@
 import React from 'react';
 import '@/styles/TopButton.scss';
-import { useOffset } from '@/hooks/useOffset';
+import Image from 'next/image';
 
 const TopButton: React.FC = () => {
-  const yOffset = useOffset();
-
   const handleClick = (): void => {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   return (
-    <div id="topBtn" onClick={() => yOffset > 0 && handleClick()}>
-      <img
+    <div id="topBtn" onClick={handleClick}>
+      <Image
         src="/Logo.svg"
         alt="logo"
         width={50}
+        height={50}
         style={{
+          height: 'fit-content',
           marginTop: -5,
           animation: 'spinning 7s infinite linear',
-          opacity: yOffset > 0 ? 1 : 0.3,
           transition: 'opacity 0.2s ease-in-out',
         }}
       />

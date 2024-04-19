@@ -1,5 +1,6 @@
+'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import '@/styles/ProgCard.scss';
 import { techs, Techs } from '@/utils/techs-data';
 import { motion, Variants } from 'framer-motion';

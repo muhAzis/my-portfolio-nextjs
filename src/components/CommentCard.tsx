@@ -1,3 +1,4 @@
+'use client';
 import { Comment } from '@/types/comment';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';

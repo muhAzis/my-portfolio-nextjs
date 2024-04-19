@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import '@/styles/SkillCard.scss';
 import Image from 'next/image';

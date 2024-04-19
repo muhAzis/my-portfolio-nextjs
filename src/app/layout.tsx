@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import '../styles/globals.scss';
-import Navbar from '@/views/Navbar';
 import { Analytics } from '@vercel/analytics/react';
 import { getServerSession, Session } from 'next-auth';
 import UserDataProvider from '@/contexts/UserDataContext';
+import ContextWrapper from './ContextWrapper';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -31,8 +31,9 @@ export default async function RootLayout({
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
       </head>
       <body className={poppins.className}>
-        {/* <Navbar /> */}
-        <UserDataProvider session={session as Session}>{children}</UserDataProvider>
+        <UserDataProvider session={session as Session}>
+          <ContextWrapper>{children}</ContextWrapper>
+        </UserDataProvider>
         <Analytics />
       </body>
     </html>

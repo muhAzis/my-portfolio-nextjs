@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import '@/styles/ContactCard.scss';
 import { motion, Variants } from 'framer-motion';

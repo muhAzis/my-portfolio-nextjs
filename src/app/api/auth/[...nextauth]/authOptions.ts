@@ -1,4 +1,4 @@
-import { Account, NextAuthOptions, Profile, User } from 'next-auth';
+import { Account, getServerSession, NextAuthOptions, Profile, User } from 'next-auth';
 import { AdapterUser } from 'next-auth/adapters';
 import { JWT } from 'next-auth/jwt';
 import GithubProvider from 'next-auth/providers/github';
@@ -31,16 +31,16 @@ export const authConfig: NextAuthOptions = {
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+  },
   secret: process.env.NEXTAUTH_SECRET,
-  // callbacks: {
-  //   async signIn({ user, account, profile, email, credentials }) {
-  //     return true;
-  //   },
-  //   async jwt({ token, user, account, profile }: jwtCallback) {
-  //     return token;
-  //   },
-  //   async session({ session, token, user }) {
-  //     return session;
-  //   },
-  // },
+  callbacks: {
+    async jwt({ token, user, account, profile }) {
+      return token;
+    },
+    async session({ session, token, user }) {
+      return session;
+    },
+  },
 };

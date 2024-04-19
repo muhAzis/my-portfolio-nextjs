@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import '@/styles/Developer.scss';
@@ -61,9 +62,7 @@ const Developer: React.FC = ({}) => {
           </div>
         </div>
 
-        <div className="comment-section">
-          <CommentSection />
-        </div>
+        <CommentSection />
       </div>
     </main>
   );

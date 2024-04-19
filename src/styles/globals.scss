@@ -114,7 +114,8 @@ button {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
+  line-height: 100%;
 }
 
 h2 {
@@ -134,7 +135,17 @@ p {
 }
 
 @media screen and (max-width: 576px) {
+  h1 {
+    font-size: 3rem;
+  }
+
   h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  h1 {
     font-size: 2rem;
   }
 }

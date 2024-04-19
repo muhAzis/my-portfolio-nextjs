@@ -1,1 +1,228 @@
+#comments {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px 20px 100px;
+  color: var(--clr-text-white);
+  background-color: var(--clr-red);
+  align-items: center;
+  overflow-x: hidden;
+  z-index: 1;
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('/nnnoise-red.svg');
+    opacity: 1;
+    z-index: -1;
+  }
+
+  .comments-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
+    gap: 20px;
+
+    .header {
+      display: flex;
+      width: 100%;
+      gap: 10px;
+      align-items: center;
+
+      .title {
+        display: flex;
+        flex: 1;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .back-btn {
+        display: flex;
+        gap: 5px;
+        font-size: 1.5rem;
+        align-items: center;
+        transition: font-weight 0.2s ease-in-out;
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .comment-box {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      align-items: flex-end;
+
+      .comment-input {
+        flex: 1;
+        height: 7rem;
+        padding: 10px;
+        font-size: 1rem;
+        background-color: var(--clr-white);
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        box-shadow: var(--box-shadow-medium);
+        resize: vertical;
+      }
+
+      .send-btn {
+        display: grid;
+        width: 50px;
+        height: 50px;
+        color: var(--clr-text-red);
+        background-color: var(--clr-white);
+        font-size: 1.5rem;
+        box-shadow: var(--box-shadow-small);
+        border-radius: 50%;
+        border: none;
+        transform: rotate(45deg);
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        place-content: center;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--clr-text-white);
+          background-color: var(--clr-yellow);
+          box-shadow: var(--box-shadow-button);
+        }
+
+        .bi {
+          margin-top: 2px;
+          margin-right: 2px;
+        }
+      }
+
+      .send-btn-mini {
+        display: flex;
+        padding: 5px 15px;
+        gap: 5px;
+        color: var(--clr-text-red);
+        background-color: var(--clr-white);
+        font-size: 1rem;
+        font-weight: 700;
+        box-shadow: var(--box-shadow-small);
+        border: none;
+        border-radius: 10px;
+        transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--clr-text-white);
+          background-color: var(--clr-yellow);
+          box-shadow: var(--box-shadow-button);
+        }
+
+        .bi {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .edit-comment {
+      display: flex;
+      width: fit-content;
+      padding: 7px;
+      gap: 5px;
+      background-color: var(--clr-back-light-trans);
+      border-radius: 50px;
+      border: 1px solid var(--clr-white);
+      transition: all 0.2s ease-in-out;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--clr-text-white);
+        background-color: var(--clr-yellow);
+        box-shadow: var(--box-shadow-button);
+        border: 1px solid var(--clr-yellow);
+      }
+
+      .comment-id {
+        max-width: 130px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        .bold {
+          font-weight: 700;
+        }
+      }
+
+      .bi {
+        font-size: 1.2rem;
+        line-height: 0;
+      }
+    }
+
+    .comments-box {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      padding-block: 20px 0px;
+      gap: 10px;
+      border-top: dashed 3px var(--clr-back-dark-trans);
+
+      .end-of-comments {
+        width: 100%;
+        padding-block: 20px;
+        color: var(--clr-text-dark-red);
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #comments {
+    .comments-container {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .title {
+          order: 2;
+          .cakram-white {
+          }
+        }
+
+        .back-btn {
+          order: 1;
+        }
+      }
+
+      .comment-box {
+        flex-direction: column;
+        gap: 10px;
+
+        .comment-input {
+          width: 100%;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #comments {
+    .comments-container {
+      .comment-box {
+        .send-btn-mini {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

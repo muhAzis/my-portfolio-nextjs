@@ -1,6 +1,7 @@
 import { Techs } from './techs-data';
 
 export interface Project {
+  id: string;
   image: string;
   title: string;
   description: string;
@@ -12,6 +13,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: '1239070123',
     image: '/samisaum-banner.png',
     title: 'Samisaum | Prayer Times App',
     description:

@@ -1,6 +1,7 @@
+'use client';
 import '@/styles/Skills.scss';
 import React from 'react';
-import { Variants, motion } from 'framer-motion';
+import { Variants } from 'framer-motion';
 import SkillCard from '@/components/SkillCard';
 import ProgCard from '@/components/ProgCard';
 import { Techs } from '@/utils/techs-data';
@@ -32,7 +33,7 @@ const parent2: Variants = {
   },
 };
 
-const Skills: React.FC = async () => {
+const Skills = () => {
   const techs: Techs[] = ['HTML', 'CSS', 'SASS', 'Bootstrap', 'Javascript', 'Typescript', 'Node JS', 'Express JS', 'React JS', 'Next JS', 'MongoDB', 'Firebase', 'C', 'CPP', 'GIT', 'GitHub', 'VS Code', 'Figma'];
   const favTechs: Techs[] = ['Typescript', 'React JS', 'Next JS', 'MongoDB', 'Firebase'];
   const targetTechs: Techs[] = ['Golang', 'Supabase', 'Docker', 'Flutter', 'Dart'];

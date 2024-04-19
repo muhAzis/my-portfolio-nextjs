@@ -1,3 +1,4 @@
+'use client';
 import { Project } from '@/utils/projects-data';
 import Image from 'next/image';
 import React from 'react';
@@ -7,6 +8,7 @@ import { techs } from '@/utils/techs-data';
 import { useViewport } from '@/hooks/useViewport';
 import Div from './animations/Div';
 import { Variants } from 'framer-motion';
+import Link from 'next/link';
 
 interface Props {
   data: Project;
@@ -19,7 +21,7 @@ const anim: Variants = {
 
 const ProjectCard = ({ data }: Props) => {
   const [width, height] = useViewport();
-  const { image, title, description, tags, techStack, github, demo } = data;
+  const { id, image, title, description, tags, techStack, github, demo } = data;
 
   return (
     <Div variants={anim} once={false} className="project-card">
@@ -44,7 +46,9 @@ const ProjectCard = ({ data }: Props) => {
           ))}
         </div>
       )}
-      <h3 className="project-title">{title}</h3>
+      <Link href={`/projects/${id}`} className="project-title">
+        {title}
+      </Link>
       <p className="project-desc">{description}</p>
       <div className="tech-stack">
         <span className="tech-header">Tech stack:</span>

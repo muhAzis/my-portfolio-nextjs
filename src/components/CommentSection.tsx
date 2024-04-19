@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import '@/styles/CommentSection.scss';
 import GithubSigninButton from './GithubSigninButton';
 import { useSession } from 'next-auth/react';
@@ -10,6 +11,9 @@ import ImportantCard from './ImportantCard';
 import Link from 'next/link';
 import Div from './animations/Div';
 import { AnimatePresence, Variants } from 'framer-motion';
+import { collection, limit, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { db } from '@/utils/firebaseConfig';
+import { Comment } from '@/types/comment';
 
 const parent: Variants = {
   hidden: { opacity: 0 },
@@ -21,13 +25,32 @@ const parent: Variants = {
   },
 };
 
-const CommentSection: React.FC = ({}) => {
+const CommentSection = () => {
   const { data: session } = useSession();
-  const { loading, comments, postComment, updateComment } = useComments();
+  const { loading, postComment, updateComment } = useComments();
   const [width, height] = useViewport();
 
+  const [comments, setComments] = useState<Comment[]>([]);
   const [comment, setComment] = useState<string>('');
   const [commentId, setCommentId] = useState<string>('');
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const commentsRef = collection(db, 'comments');
+  //       const q = query(commentsRef, orderBy('iat', 'desc'), limit(7));
+  //       onSnapshot(q, (snapshot) => {
+  //         const data = snapshot.docs.map((doc) => {
+  //           return { ...doc.data(), id: doc.id } as Comment;
+  //         });
+
+  //         setComments(data);
+  //       });
+  //     } catch (error) {
+  //       return new Error('Something went wrong!');
+  //     }
+  //   })();
+  // }, []);
 
   const handleSendComment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,14 +65,6 @@ const CommentSection: React.FC = ({}) => {
     comment.length > 0 ? updateComment({ comment, id: commentId }) : alert('Comment cannot be empty!');
     setComment('');
     setCommentId('');
-  };
-
-  const renderComments = () => {
-    if (comments.length > 7) {
-      return comments.slice(0, 7).map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={comment.id} />);
-    }
-
-    return comments.map((comment, i) => <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={comment.id} />);
   };
 
   return (
@@ -90,16 +105,14 @@ const CommentSection: React.FC = ({}) => {
         </>
       )}
       <div className="comments-container">
-        <AnimatePresence>{renderComments()}</AnimatePresence>
-        {comments.length - 7 > 0 ? (
-          <Link href={'/comments'} className="full-comments-btn">
-            See other {comments.length - 7} comments
-          </Link>
-        ) : (
-          <Link href={'/comments'} className="full-comments-btn">
-            {'Go to Comments page >'}
-          </Link>
-        )}
+        <AnimatePresence>
+          {comments.map((comment, i) => (
+            <CommentCard {...comment} edit={{ id: setCommentId, comment: setComment }} key={comment.id} />
+          ))}
+        </AnimatePresence>
+        <Link href={'/comments'} className="full-comments-btn">
+          {'Go to Comments page >'}
+        </Link>
       </div>
     </div>
   );

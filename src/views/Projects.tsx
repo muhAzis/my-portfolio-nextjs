@@ -3,6 +3,7 @@ import '@/styles/Projects.scss';
 import Image from 'next/image';
 import { projects } from '@/utils/projects-data';
 import ProjectCard from '@/components/ProjectCard';
+import ButtonCTA from '@/components/ButtonCTA';
 
 const Projects = () => {
   return (
@@ -19,6 +20,12 @@ const Projects = () => {
               This is a few of my <span className="bold">projects</span> that will catch <span className="bold">your interest!</span>
             </h2>
             <p className="desc">These are products I made that can be your consideration about what I actually can do for you</p>
+            <div className="cta">
+              <span className="line" />
+              <ButtonCTA navigate={true} href="/projects" bIcon="bi bi-arrow-right" bIconPos="right" style={{ width: 'fit-content' }}>
+                See all projects
+              </ButtonCTA>
+            </div>
           </div>
         </div>
         <div className="projects-section">

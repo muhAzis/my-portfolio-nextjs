@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+import React from 'react';
 import '@/styles/WelcomeScreen.scss';
-import { easeInOut, easeOut, motion } from 'framer-motion';
+import { easeOut, motion } from 'framer-motion';
 import Logo from '@/components/Logo';
 
 const parent = {
